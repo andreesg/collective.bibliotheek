@@ -1,0 +1,506 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.bibliotheek\n"
+"POT-Creation-Date: 2015-04-09 15:28+0000\n"
+"PO-Revision-Date: 2015-04-10 15:29+0000’\n"
+"Last-Translator: INTK <info@intk.com>\n"
+"Language-Team: Dutch <info@intk.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: nl\n"
+"Language-Name: Dutch\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: collective.bibliotheek\n"
+
+#: ../profiles/default/types/Object.xml:7
+msgid "Object"
+msgstr "Objecten"
+
+#: ../profiles/default/types/Object.xml:8
+msgid "Information about an object typically collected by museums"
+msgstr "Informatie over een object meestal verzameld door musea"
+
+#: ../book.py
+msgid "Book"
+msgstr "Boeken"
+
+#: ../book.py
+msgid "Body"
+msgstr "Tekst"
+
+#: ../book.py
+msgid "Description"
+msgstr "Beschrijving"
+
+#: ../book.py
+msgid "Body"
+msgstr "Tekst"
+
+#: ../book.py
+msgid "Title, author, imprint, collation"
+msgstr "Titel, auteur, impressum, collatie"
+
+#: ../book.py
+msgid "Title and author"
+msgstr "Titel en auteur"
+
+#: ../book.py
+msgid "Article"
+msgstr "Lidwoord"
+
+#: ../book.py
+msgid "Title"
+msgstr "Titel"
+
+#: ../book.py
+msgid "Statement of respsib."
+msgstr "Auteursvermelding"
+
+#: ../book.py
+msgid "Author"
+msgstr "Auteur"
+
+#: ../book.py
+msgid "Role"
+msgstr "Rol"
+
+#: ../book.py
+msgid "Illustrator"
+msgstr "Illustrator"
+
+#: ../book.py
+msgid "Corp.author"
+msgstr "Corp.auteur"
+
+#: ../book.py
+msgid "Edition"
+msgstr "Editie"
+
+#: ../book.py
+msgid "Imprint"
+msgstr "Impressum"
+
+#: ../book.py
+msgid "Imprint"
+msgstr "Impressum"
+
+#: ../book.py
+msgid "Place"
+msgstr "Plaats"
+
+#: ../book.py
+msgid "Publisher"
+msgstr "Uitgever"
+
+#: ../book.py
+msgid "Year"
+msgstr "Jaar"
+
+#: ../book.py
+msgid "Place printed"
+msgstr "Plaats van druk"
+
+#: ../book.py
+msgid "Printer"
+msgstr "Drukker"
+
+#: ../book.py
+msgid "Sort year"
+msgstr "Sorteerjaar"
+
+#: ../book.py
+msgid "Collation"
+msgstr "Collatie"
+
+#: ../book.py
+msgid "Pagination"
+msgstr "Pagina's"
+
+#: ../book.py
+msgid "Illustrations"
+msgstr "Illustraties"
+
+#: ../book.py
+msgid "Dimensions"
+msgstr "Formaat"
+
+#: ../book.py
+msgid "Accompanying material"
+msgstr "Begeleidend materiaal"
+
+#: ../book.py
+msgid "Series, notes, ISBN"
+msgstr "Reeks, annotatie, ISBN"
+
+#: ../book.py
+msgid "Series"
+msgstr "Reeks"
+
+#: ../book.py
+msgid "Series article"
+msgstr "Lidwoord reeks"
+
+#: ../book.py
+msgid "Series no."
+msgstr "Reeksnummer"
+
+#: ../book.py
+msgid "ISSN series"
+msgstr "ISSN reeks"
+
+#: ../book.py
+msgid "Subseries"
+msgstr "Onderreeks"
+
+#: ../book.py
+msgid "Subseries article"
+msgstr "Onderreeks lidwoord"
+
+#: ../book.py
+msgid "Subseries number"
+msgstr "Onderreeks nummer"
+
+#: ../book.py
+msgid "ISSN subseries"
+msgstr "ISSN onderreeks"
+
+#: ../book.py
+msgid "Notes"
+msgstr "Annotatie"
+
+#: ../book.py
+msgid "Bibliographical notes"
+msgstr "Annotatie"
+
+#: ../book.py
+msgid "ISBN"
+msgstr "ISBN"
+
+#: ../book.py
+msgid "Price"
+msgstr "Prijs"
+
+#: ../book.py
+msgid "Binding method"
+msgstr "Bindwijze"
+
+#: ../book.py
+msgid "ISSN"
+msgstr "ISSN"
+
+#: ../book.py
+msgid "Conference"
+msgstr "Conferentie"
+
+#: ../book.py
+msgid "Abstract and subject terms"
+msgstr "Samenvatting, classificatie, trefwoorden"
+
+#: ../book.py
+msgid "Material type"
+msgstr "Materiaalsoort"
+
+#: ../book.py
+msgid "Bibl. form"
+msgstr "Blibliogr. vorm"
+
+#: ../book.py
+msgid "Language"
+msgstr "Taal"
+
+#: ../book.py
+msgid "Level"
+msgstr "Niveau"
+
+#: ../book.py
+msgid "Class number"
+msgstr "Class. code"
+
+#: ../book.py
+msgid "Subject term type"
+msgstr "Soort trefwoord"
+
+#: ../book.py
+msgid "Subject term"
+msgstr "Trefwoord"
+
+#: ../book.py
+msgid "Proper name"
+msgstr "Eigennaam"
+
+#: ../book.py
+msgid "Person keyword type"
+msgstr "Soort pers.trefwoord"
+
+#: ../book.py
+msgid "Person keyword type"
+msgstr "Naam"
+
+#: ../book.py
+msgid "Role"
+msgstr "Rol"
+
+#: ../book.py
+msgid "Geographical keyword"
+msgstr "Greografish trefwoord"
+
+#: ../book.py
+msgid "Period"
+msgstr "Periode"
+
+#: ../book.py
+msgid "Start date"
+msgstr "Begindatum"
+
+#: ../book.py
+msgid "End date"
+msgstr "Einddatum"
+
+#: ../book.py
+msgid "Digital references"
+msgstr "Digitale referenties"
+
+#: ../book.py
+msgid "Reference"
+msgstr "Referentie"
+
+#: ../book.py
+msgid "Abstract"
+msgstr "Samenvatting"
+
+#
+# Reproductions
+#
+
+#: ../book.py
+msgid "Reproductions"
+msgstr "Reproducties"
+
+#: ../book.py
+msgid "Reproduction"
+msgstr "Reproductie"
+
+#: ../book.py
+msgid "Reference"
+msgstr "Referentie"
+
+#: ../book.py
+msgid "Format"
+msgstr "Formaat"
+
+#: ../book.py
+msgid "Type"
+msgstr "Soort"
+
+#: ../book.py
+msgid "Date"
+msgstr "Datum"
+
+#: ../book.py
+msgid "Identifier (URL)"
+msgstr "Identifier (URL)"
+
+#: ../book.py
+msgid "Notes"
+msgstr "Bijzonderheden"
+
+#
+# exhibitions_auctions_collections
+#
+
+#: ../book.py
+msgid "Exhibitions, auctions, collections"
+msgstr "Tentoonstellingen, veilingen, collecties"
+
+#: ../book.py
+msgid "Exhibition"
+msgstr "Tentoonstelling"
+
+#: ../book.py
+msgid "Exhibition name"
+msgstr "Tentoonstellingsnaam"
+
+#: ../book.py
+msgid "Date"
+msgstr "Datum"
+
+#: ../book.py
+msgid "to"
+msgstr "t/m"
+
+#: ../book.py
+msgid "Venue"
+msgstr "Locatie"
+
+#: ../book.py
+msgid "Venue"
+msgstr "Locatie"
+
+#: ../book.py
+msgid "Auction"
+msgstr "Veiling"
+
+#: ../book.py
+msgid "Auction name"
+msgstr "Veilingnaam"
+
+#: ../book.py
+msgid "Auctioneer"
+msgstr "Veilinghuis"
+
+#: ../book.py
+msgid "Collector"
+msgstr "Collectioneur"
+
+#: ../book.py
+msgid "Commissair-priseur"
+msgstr "Commissair-priseur"
+
+#: ../book.py
+msgid "Auction number"
+msgstr "Veilingnummer"
+
+#: ../book.py
+msgid "Collection"
+msgstr "Collectie"
+
+#: ../book.py
+msgid "Collection name"
+msgstr "Collectienaam"
+
+#: ../book.py
+msgid "Organisation"
+msgstr "Organisatie"
+
+#: ../book.py
+msgid "Location"
+msgstr "Locatie"
+
+#
+# Relations
+#
+
+#: ../book.py
+msgid "Relations"
+msgstr "Relaties"
+
+#: ../book.py
+msgid "Volume"
+msgstr "Deel"
+
+#: ../book.py
+msgid "Analytical cataloguing"
+msgstr "Koepelgegevens"
+
+#: ../book.py
+msgid "record no."
+msgstr "recordnr."
+
+#: ../book.py
+msgid "Part of"
+msgstr "Onderdeel van"
+
+#: ../book.py
+msgid "Consists of"
+msgstr "Bestaat uit"
+
+#: ../book.py
+msgid "Museum objects"
+msgstr "Museumobjecten"
+
+#: ../book.py
+msgid "Object no."
+msgstr "Objectnr"
+
+#: ../book.py
+msgid "Object name"
+msgstr "Objectnaam"
+
+#: ../book.py
+msgid "Maker"
+msgstr "Vervaardiger"
+
+#
+# Free fields
+#
+
+
+#: ../book.py
+msgid "Free fields and numbers"
+msgstr "Vrije velden en nummer"
+
+#: ../book.py
+msgid "Free fields"
+msgstr "Vrije velden"
+
+#: ../book.py
+msgid "Confidential"
+msgstr "Vertrouwelijk"
+
+#: ../book.py
+msgid "Contents"
+msgstr "Inhoud"
+
+#: ../book.py
+msgid "Other number"
+msgstr "Andere nummers"
+
+#: ../book.py
+msgid "PPN"
+msgstr "PPN"
+
+#
+# Copies and shelf marks
+#
+
+#: ../book.py
+msgid "Copies and shelf marks"
+msgstr "Exemplaren en vindplaatsen"
+
+#: ../book.py
+msgid "Default shelf mark"
+msgstr "Standaard signatuur"
+
+#: ../book.py
+msgid "Copy details"
+msgstr "Exemplaargegevens"
+
+#: ../book.py
+msgid "Copy number"
+msgstr "Exemplaarnummer"
+
+#: ../book.py
+msgid "Shelf mark"
+msgstr "Plaatscode"
+
+#: ../book.py
+msgid "Availability"
+msgstr "Beschikbaarheid"
+
+#: ../book.py
+msgid "Loan category"
+msgstr "Uitleencategorie"
+
+#: ../book.py
+msgid "Site"
+msgstr "Filiaal"
+
+#: ../book.py
+msgid "Location notes"
+msgstr "Bijzonderheden locatie"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
