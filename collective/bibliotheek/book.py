@@ -170,7 +170,6 @@ class IBook(form.Schema):
     dexteritytextindexer.searchable('titleAuthorImprintCollation_imprint_printer')
 
     # Sort year
-
     titleAuthorImprintCollation_sortYear_sortYear = schema.TextLine(
         title=_(u'Sort year'),
         required=False
@@ -178,7 +177,6 @@ class IBook(form.Schema):
     dexteritytextindexer.searchable('titleAuthorImprintCollation_sortYear_sortYear')
 
     # Collation
-
     titleAuthorImprintCollation_collation_pagination = schema.TextLine(
         title=_(u'Pagination'),
         required=False
@@ -411,7 +409,7 @@ class IBook(form.Schema):
     model.fieldset('relations', label=_(u'Relations'), 
         fields=['relations_volume', 'relations_analyticalCataloguing_recordNo',
                 'relations_analyticalCataloguing_volume', 'relations_analyticalCataloguing_title', 'relations_analyticalCataloguing_partOf',
-                'relations_analyticalCataloguing_consistsOf', 'relations_museumObjects']
+                'relations_analyticalCataloguing_consistsOf', 'relations_museumObjects', 'relations_relatedMuseumObjects']
     )
 
     relations_volume = schema.TextLine(
@@ -457,6 +455,16 @@ class IBook(form.Schema):
         required=False)
     form.widget(relations_museumObjects=DataGridFieldFactory)
     dexteritytextindexer.searchable('relations_museumObjects')
+
+    relations_relatedMuseumObjects = RelationList(
+        title=_(u'Museum objects'),
+        default=[],
+        value_type=RelationChoice(
+            title=u"Related",
+            source=ObjPathSourceBinder()
+        ),
+        required=False
+    )
 
     # # # # # # # # # # # # # # # # # # # # #
     # Free fields and numbers               #
