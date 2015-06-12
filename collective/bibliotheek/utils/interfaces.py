@@ -134,8 +134,9 @@ class IReproduction(Interface):
     identifierURL = schema.TextLine(title=_(u'Identifier (URL)'), required=False)
     notes = schema.TextLine(title=_(u'Notes'), required=False)
 
-
-# Exhibitions, auctions, collections
+##
+## Exhibitions, auctions, collections
+##
 class IExhibition(Interface):
     exhibitionName = schema.TextLine(title=_(u'Exhibition name'), required=False)
     date = schema.TextLine(title=_(u'Date'), required=False)
