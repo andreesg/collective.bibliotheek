@@ -376,8 +376,19 @@ class IBook(form.Schema):
     # Exhibitions, auctions, collections    #
     # # # # # # # # # # # # # # # # # # # # #
     model.fieldset('exhibitions_auctions_collections', label=_(u'Exhibitions, auctions, collections'), 
-        fields=['exhibitionsAuctionsCollections_exhibition', 'exhibitionsAuctionsCollections_auction',
+        fields=['exhibitionsAuctionsCollections_relatedExhibitions',
+                'exhibitionsAuctionsCollections_exhibition', 'exhibitionsAuctionsCollections_auction',
                 'exhibitionsAuctionsCollections_collection']
+    )
+
+    exhibitionsAuctionsCollections_relatedExhibitions = RelationList(
+        title=_(u'Exhibitions'),
+        default=[],
+        value_type=RelationChoice(
+            title=u"Related",
+            source=ObjPathSourceBinder()
+        ),
+        required=False
     )
 
     # Exhibition

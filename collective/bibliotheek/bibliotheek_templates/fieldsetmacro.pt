@@ -217,6 +217,11 @@
     <!-- exhibitions_auctions_collections -->
     <div class="row no-padding">
         <h2 class="page-header" i18n:translate="">Exhibition</h2>
+        <div class="form-horizontal gridfield">
+          <tal:widget tal:replace="structure widgets/exhibitionsAuctionsCollections_relatedExhibitions/@@ploneform-render-widget"/>
+        </div>
+
+        <h2 class="page-header" i18n:translate="">Exhibition</h2>
 
         <div class="form-horizontal gridfield">
           <tal:widget tal:replace="structure widgets/exhibitionsAuctionsCollections_exhibition/@@ploneform-render-widget"/>

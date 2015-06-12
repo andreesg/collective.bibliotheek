@@ -144,6 +144,7 @@ class IExhibition(Interface):
     venue = schema.TextLine(title=_(u'Venue'), required=False)
     place = schema.TextLine(title=_(u'Place'), required=False)
     notes = schema.TextLine(title=_(u'Notes'), required=False)
+    priref = schema.TextLine(title=_(u'priref'), required=False)
 
 
 class IAuction(Interface):
