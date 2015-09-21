@@ -39,6 +39,35 @@ def _createPriorityVocabulary():
 priority_vocabulary = SimpleVocabulary(list(_createPriorityVocabulary()))
 insurance_type_vocabulary = SimpleVocabulary(list(_createInsuranceTypeVocabulary()))
 
+
+class ATVMVocabulary(object):
+    implements(IVocabularyFactory)
+    def __init__(self, name):
+        self.name = name
+
+    def __call__(self, context):
+        portal = getSite()
+        try:
+            atvm = getToolByName(portal, 'portal_vocabularies')
+            units = atvm.getVocabularyByName(self.name)
+            terms = []
+        except:
+            units = []
+            terms = []
+            pass
+
+        #if self.name == "TaxonomyRank":
+        #    taxonomies = ["kingdom", "subkingdom", "phylum or division", "subphylum or subdivision", "superclass", "class", "subclass", "infraclass", "superorder", "order", "suborder", "infraorder", "superfamily", "family", "subfamily", "tribe", "subtribe", "genus", "subgenus", "section", "subsection", "species", "subspecies", "variety", "subvariety", "form", "subform"]
+        #    for taxonomy in taxonomies:
+        #        if taxonomy not in units:
+        #            atvm.TaxonomyRank.addTerm(taxonomy.encode('ascii', 'ignore'), str(taxonomy))
+
+        for term in units:
+            if units[term]:
+                terms.append(SimpleVocabulary.createTerm(
+                    term, term.encode('utf-8'), _(units[term].title)))
+        return SimpleVocabulary(terms)
+
 class ObjectVocabulary(object):
 
     implements(IVocabularyFactory)
@@ -78,3 +107,11 @@ BiblformVocabularyFactory = ObjectVocabulary('abstractAndSubjectTerms_biblForm')
 MaterialtypeVocabularyFactory = ObjectVocabulary('abstractAndSubjectTerms_materialType')
 LanguageVocabularyFactory = ObjectVocabulary('abstractAndSubjectTerms_language')
 ClassnumberVocabularyFactory = ObjectVocabulary('abstractAndSubjectTerms_classNumber')
+GeokeywordVocabularyFactory = ObjectVocabulary('abstractAndSubjectTerms_geographicalKeyword')
+LoanVocabularyFactory = ObjectVocabulary('copiesAndShelfMarks_copyDetails_loan')
+SiteVocabularyFactory = ObjectVocabulary('copiesAndShelfMarks_copyDetails_site')
+
+
+ObjectStatusVocabularyFactory = ATVMVocabulary('ObjectStatus')
+PersonKeywordTypeVocabularyFactory = ATVMVocabulary('PersonKeywordType')
+

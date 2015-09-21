@@ -100,3 +100,13 @@ def abstractAndSubjectTerms_classNumber(object, **kw):
     except:
         return []
 
+@indexer(IBook)
+def abstractAndSubjectTerms_geographicalKeyword(object, **kw):
+    try:
+        if hasattr(object, 'abstractAndSubjectTerms_geographicalKeyword'):
+            return object.abstractAndSubjectTerms_geographicalKeyword
+        else:
+            return []
+    except:
+        return []
+

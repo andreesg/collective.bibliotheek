@@ -309,7 +309,7 @@ class IBook(form.Schema):
     form.widget(abstractAndSubjectTerms_notes=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('abstractAndSubjectTerms_notes')
 
-    abstractAndSubjectTerms_classNumber =schema.List(
+    abstractAndSubjectTerms_classNumber = schema.List(
         title=_(u'Class number'),
         required=False,
         value_type=schema.TextLine(),
@@ -330,17 +330,24 @@ class IBook(form.Schema):
     form.widget(abstractAndSubjectTerms_personKeywordType=DataGridFieldFactory)
     dexteritytextindexer.searchable('abstractAndSubjectTerms_personKeywordType')
 
-    abstractAndSubjectTerms_geographicalKeyword = ListField(title=_(u'Geographical keyword'),
-        value_type=DictRow(title=_(u'Geographical keyword'), schema=IGeographicalKeyword),
-        required=False)
-    form.widget(abstractAndSubjectTerms_geographicalKeyword=BlockDataGridFieldFactory)
-    dexteritytextindexer.searchable('abstractAndSubjectTerms_geographicalKeyword')
+    abstractAndSubjectTerms_geographicalKeyword = schema.List(
+        title=_(u'Greographical keyword'),
+        required=False,
+        value_type=schema.TextLine(),
+        missing_value=[],
+        default=[]
+    )
+    form.widget('abstractAndSubjectTerms_geographicalKeyword', AjaxSelectFieldWidget, vocabulary="collective.bibliotheek.geokeyword")
 
-    abstractAndSubjectTerms_period = ListField(title=_(u'Period'),
-        value_type=DictRow(title=_(u'Period'), schema=IPeriod),
-        required=False)
-    form.widget(abstractAndSubjectTerms_period=BlockDataGridFieldFactory)
-    dexteritytextindexer.searchable('abstractAndSubjectTerms_period')
+    abstractAndSubjectTerms_period = schema.List(
+        title=_(u'Period'),
+        required=False,
+        value_type=schema.TextLine(),
+        missing_value=[],
+        default=[]
+    )
+    form.widget('abstractAndSubjectTerms_period', AjaxSelectFieldWidget, vocabulary="collective.object.period")
+
 
     abstractAndSubjectTerms_startDate = schema.TextLine(
         title=_(u'Start date'),
@@ -388,12 +395,11 @@ class IBook(form.Schema):
     # Exhibitions, auctions, collections    #
     # # # # # # # # # # # # # # # # # # # # #
     model.fieldset('exhibitions_auctions_collections', label=_(u'Exhibitions, auctions, collections'), 
-        fields=['exhibitionsAuctionsCollections_relatedExhibitions',
-                'exhibitionsAuctionsCollections_exhibition', 'exhibitionsAuctionsCollections_auction',
+        fields=['exhibitionsAuctionsCollections_exhibition', 'exhibitionsAuctionsCollections_auction',
                 'exhibitionsAuctionsCollections_collection']
     )
 
-    exhibitionsAuctionsCollections_relatedExhibitions = RelationList(
+    """exhibitionsAuctionsCollections_relatedExhibitions = RelationList(
         title=_(u'Exhibitions'),
         default=[],
         value_type=RelationChoice(
@@ -401,7 +407,7 @@ class IBook(form.Schema):
             source=ObjPathSourceBinder()
         ),
         required=False
-    )
+    )"""
 
     # Exhibition
     exhibitionsAuctionsCollections_exhibition = ListField(title=_(u'Exhibition'),
@@ -430,8 +436,7 @@ class IBook(form.Schema):
     # # # # # # # # # # # # # # # # # # # # #
 
     model.fieldset('relations', label=_(u'Relations'), 
-        fields=['relations_volume', 'relations_analyticalCataloguing_recordNo',
-                'relations_analyticalCataloguing_volume', 'relations_analyticalCataloguing_title', 'relations_analyticalCataloguing_partOf',
+        fields=['relations_volume', 'relations_analyticalCataloguing_partOf',
                 'relations_analyticalCataloguing_consistsOf', 'relations_museumObjects', 'relations_relatedMuseumObjects']
     )
 
@@ -440,24 +445,6 @@ class IBook(form.Schema):
         required=False
     )
     dexteritytextindexer.searchable('relations_volume')
-
-    relations_analyticalCataloguing_recordNo = schema.TextLine(
-        title=_(u'record no.'),
-        required=False
-    )
-    dexteritytextindexer.searchable('relations_analyticalCataloguing_recordNo')
-
-    relations_analyticalCataloguing_volume = schema.TextLine(
-        title=_(u'Volume'),
-        required=False
-    )
-    dexteritytextindexer.searchable('relations_analyticalCataloguing_volume')
-
-    relations_analyticalCataloguing_title = schema.TextLine(
-        title=_(u'Title'),
-        required=False
-    )
-    dexteritytextindexer.searchable('relations_analyticalCataloguing_title')
 
     # Analytical cataloguing
     relations_analyticalCataloguing_partOf = ListField(title=_(u'Part of'),
@@ -537,9 +524,7 @@ class IBook(form.Schema):
         required=False)
     form.widget(copiesAndShelfMarks_copyDetails=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('copiesAndShelfMarks_copyDetails')
-
-
-
+    
 
 
     

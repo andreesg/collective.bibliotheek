@@ -94,7 +94,8 @@
   <adapter name="abstractAndSubjectTerms_materialType" factory=".utils.indexers.abstractAndSubjectTerms_materialType" />
   <adapter name="abstractAndSubjectTerms_language" factory=".utils.indexers.abstractAndSubjectTerms_language" />
   <adapter name="abstractAndSubjectTerms_classNumber" factory=".utils.indexers.abstractAndSubjectTerms_classNumber" />
-  
+  <adapter name="abstractAndSubjectTerms_geographicalKeyword" factory=".utils.indexers.abstractAndSubjectTerms_geographicalKeyword" />
+
   <utility
     component=".utils.vocabularies.RoleVocabularyFactory"
     name="collective.bibliotheek.role"
@@ -130,8 +131,14 @@
     name="collective.bibliotheek.classnumber"
     />
 
-    
-    
+  <utility
+    component=".utils.vocabularies.GeokeywordVocabularyFactory"
+    name="collective.bibliotheek.geokeyword"
+    />
 
-
+  <utility
+    component=".utils.vocabularies.PersonKeywordTypeVocabularyFactory"
+    name="collective.bibliotheek.personkeywordtype"
+    />
+    
 </configure>

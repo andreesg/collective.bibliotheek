@@ -485,7 +485,7 @@ msgstr "Uitleencategorie"
 
 #: ../book.py
 msgid "Site"
-msgstr "Locatie"
+msgstr "Filiaal"
 
 #: ../book.py
 msgid "Location notes"

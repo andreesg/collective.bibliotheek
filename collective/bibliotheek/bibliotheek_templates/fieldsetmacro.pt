@@ -166,11 +166,11 @@
           <tal:widget tal:replace="structure widgets/abstractAndSubjectTerms_personKeywordType/@@ploneform-render-widget"/>    
       </div>
 
-      <div class="form-horizontal gridfield">
+      <div class="form-horizontal">
           <tal:widget tal:replace="structure widgets/abstractAndSubjectTerms_geographicalKeyword/@@ploneform-render-widget"/>    
       </div>
 
-      <div class="form-horizontal gridfield">
+      <div class="form-horizontal">
           <tal:widget tal:replace="structure widgets/abstractAndSubjectTerms_period/@@ploneform-render-widget"/>    
       </div>
 
@@ -217,12 +217,7 @@
     <!-- exhibitions_auctions_collections -->
     <div class="row no-padding">
         <h2 class="page-header" i18n:translate="">Exhibition</h2>
-        <div class="form-horizontal gridfield">
-          <tal:widget tal:replace="structure widgets/exhibitionsAuctionsCollections_relatedExhibitions/@@ploneform-render-widget"/>
-        </div>
-
-        <h2 class="page-header" i18n:translate="">Exhibition</h2>
-
+   
         <div class="form-horizontal gridfield">
           <tal:widget tal:replace="structure widgets/exhibitionsAuctionsCollections_exhibition/@@ploneform-render-widget"/>
         </div>
@@ -253,12 +248,6 @@
 
         <h2 class="page-header" i18n:translate="">Analytical cataloguing</h2>
 
-        <div class="form-horizontal">
-          <tal:widget tal:replace="structure widgets/relations_analyticalCataloguing_recordNo/@@ploneform-render-widget"/>
-          <tal:widget tal:replace="structure widgets/relations_analyticalCataloguing_volume/@@ploneform-render-widget"/>
-          <tal:widget tal:replace="structure widgets/relations_analyticalCataloguing_title/@@ploneform-render-widget"/>
-        </div>
-
         <div class="form-horizontal gridfield">
           <tal:widget tal:replace="structure widgets/relations_analyticalCataloguing_partOf/@@ploneform-render-widget"/>
         </div>
@@ -273,11 +262,6 @@
           <tal:widget tal:replace="structure widgets/relations_museumObjects/@@ploneform-render-widget"/>
         </div>
 
-        <h2 class="page-header" i18n:translate="">Museum objects</h2>
-        
-        <div class="form-horizontal gridfield table-responsive">
-          <tal:widget tal:replace="structure widgets/relations_relatedMuseumObjects/@@ploneform-render-widget"/>
-        </div>
     </div>
   </tal:relations>
 
