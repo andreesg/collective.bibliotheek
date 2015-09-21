@@ -189,7 +189,7 @@ class ISubjectTerm(Interface):
     form.widget('properName', AjaxSingleSelectFieldWidget, vocabulary="collective.bibliotheek.propername")
 
 class IPersonKeywordType(Interface):
-    personKeywordType = schema.Choice(title=_(u'Person keyword type'), required=True, vocabulary="collective.object.personkeywordtype", default="No value")
+    personKeywordType = schema.Choice(title=_(u'Person keyword type'), required=True, vocabulary="collective.bibliotheek.personkeywordtype", default="No value")
     name = schema.List(
         title=_(u'Name'),
         required=False,
