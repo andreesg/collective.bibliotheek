@@ -169,9 +169,9 @@ class IClassNumber(Interface):
     term = schema.TextLine(title=_(u'Class number'), required=False)
 
 class ISubjectTerm(Interface):
-    subjectTermType = schema.Choice(title=_(u'Subject type'), required=True, vocabulary="collective.object.subjecttype", default="No value")
+    subjectTermType = schema.Choice(title=_(u'Subject term type'), required=True, vocabulary="collective.object.subjecttype", default="No value")
     subjectType = schema.List(
-        title=_(u'Subject type'),
+        title=_(u'Subject term'),
         required=False,
         value_type=schema.TextLine(),
         missing_value=[],
@@ -189,7 +189,7 @@ class ISubjectTerm(Interface):
     form.widget('properName', AjaxSingleSelectFieldWidget, vocabulary="collective.bibliotheek.propername")
 
 class IPersonKeywordType(Interface):
-    personKeywordType = schema.Choice(title=_(u'Person keyword type'), required=True, vocabulary="collective.object.subjecttype", default="No value")
+    personKeywordType = schema.Choice(title=_(u'Person keyword type'), required=True, vocabulary="collective.object.personkeywordtype", default="No value")
     name = schema.List(
         title=_(u'Name'),
         required=False,
@@ -197,7 +197,7 @@ class IPersonKeywordType(Interface):
         missing_value=[],
         default=[]
     )
-    form.widget('name', AjaxSingleSelectFieldWidget, vocabulary="collective.bibliotheek.personkeywordtype")
+    form.widget('name', AjaxSingleSelectFieldWidget, vocabulary="collective.bibliotheek.site")
 
     role = schema.List(
         title=_(u'Role'),
@@ -206,7 +206,7 @@ class IPersonKeywordType(Interface):
         missing_value=[],
         default=[]
     )
-    form.widget('role', AjaxSingleSelectFieldWidget, vocabulary="collective.bibliotheek.roles")
+    form.widget('role', AjaxSingleSelectFieldWidget, vocabulary="collective.bibliotheek.site")
 
 class IGeographicalKeyword(Interface):
     term = schema.TextLine(title=_(u'Geographical keyword'), required=False)
