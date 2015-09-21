@@ -111,7 +111,6 @@ GeokeywordVocabularyFactory = ObjectVocabulary('abstractAndSubjectTerms_geograph
 LoanVocabularyFactory = ObjectVocabulary('copiesAndShelfMarks_copyDetails_loan')
 SiteVocabularyFactory = ObjectVocabulary('copiesAndShelfMarks_copyDetails_site')
 
-
 ObjectStatusVocabularyFactory = ATVMVocabulary('ObjectStatus')
 PersonKeywordTypeVocabularyFactory = ATVMVocabulary('PersonKeywordType')
 

@@ -140,5 +140,26 @@
     component=".utils.vocabularies.PersonKeywordTypeVocabularyFactory"
     name="collective.bibliotheek.personkeywordtype"
     />
+
+  <utility
+    component=".utils.vocabularies.SiteVocabularyFactory"
+    name="collective.bibliotheek.subjecttype"
+    />
+
+  <utility
+    component=".utils.vocabularies.SiteVocabularyFactory"
+    name="collective.bibliotheek.propername"
+    />
+
+    <utility
+    component=".utils.vocabularies.SiteVocabularyFactory"
+    name="collective.bibliotheek.loanCategory"
+    />
+    
+    <utility
+    component=".utils.vocabularies.SiteVocabularyFactory"
+    name="collective.bibliotheek.site"
+    />
+  
     
 </configure>

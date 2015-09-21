@@ -41,7 +41,7 @@ from plone.app.widgets.dx import DatetimeFieldWidget, RelatedItemsFieldWidget
 #
 # DataGridFields dependencies
 #
-from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
+from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow, IDataGridField
 from collective.z3cform.datagridfield.blockdatagridfield import BlockDataGridFieldFactory
 
 # # # # # # # # # # # # # # # 
@@ -346,7 +346,7 @@ class IBook(form.Schema):
         missing_value=[],
         default=[]
     )
-    form.widget('abstractAndSubjectTerms_period', AjaxSelectFieldWidget, vocabulary="collective.object.period")
+    form.widget('abstractAndSubjectTerms_period', AjaxSelectFieldWidget, vocabulary="collective.object.periods")
 
 
     abstractAndSubjectTerms_startDate = schema.TextLine(
@@ -524,7 +524,7 @@ class IBook(form.Schema):
         required=False)
     form.widget(copiesAndShelfMarks_copyDetails=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('copiesAndShelfMarks_copyDetails')
-    
+
 
 
     
@@ -547,10 +547,7 @@ class AddForm(add.DefaultAddForm):
         super(AddForm, self).update()
         for group in self.groups:
             for widget in group.widgets.values():
-                if widget.__name__ in ['titleAuthorImprintCollation_title', 'titleAuthorImprintCollation_titleAuthor_author',
-                                        'titleAuthorImprintCollation_titleAuthor_illustrator', 'titleAuthorImprintCollation_imprint_place',
-                                        'titleAuthorImprintCollation_imprint_publisher', 'titleAuthorImprintCollation_imprint_placePrinted',
-                                        'titleAuthorImprintCollation_collation_accompanyingMaterial']:
+                if IDataGridField.providedBy(widget):
                     widget.auto_append = False
                     widget.allow_reorder = True
                 alsoProvides(widget, IFormWidget)
@@ -566,10 +563,7 @@ class EditForm(edit.DefaultEditForm):
         super(EditForm, self).update()
         for group in self.groups:
             for widget in group.widgets.values():
-                if widget.__name__ in ['titleAuthorImprintCollation_title', 'titleAuthorImprintCollation_titleAuthor_author',
-                                        'titleAuthorImprintCollation_titleAuthor_illustrator', 'titleAuthorImprintCollation_imprint_place',
-                                        'titleAuthorImprintCollation_imprint_publisher', 'titleAuthorImprintCollation_imprint_placePrinted',
-                                        'titleAuthorImprintCollation_collation_accompanyingMaterial']:
+                if IDataGridField.providedBy(widget):
                     widget.auto_append = False
                     widget.allow_reorder = True
                 alsoProvides(widget, IFormWidget)
