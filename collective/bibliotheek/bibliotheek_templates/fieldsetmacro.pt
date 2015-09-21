@@ -22,7 +22,7 @@
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_statementOfRespsib/@@ploneform-render-widget"/>
         </div>
 
-        <div class="form-horizontal gridfield">
+        <div class="form-horizontal gridfield ">
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_author/@@ploneform-render-widget"/>
         </div>
 
@@ -134,15 +134,15 @@
 
       <h2 class="page-header" i18n:translate="">Abstract and subject terms</h2>
       
-      <div class="form-horizontal gridfield">
+      <div class="form-horizontal">
           <tal:widget tal:replace="structure widgets/abstractAndSubjectTerms_materialType/@@ploneform-render-widget"/>
       </div>
       
-      <div class="form-horizontal gridfield">
+      <div class="form-horizontal">
           <tal:widget tal:replace="structure widgets/abstractAndSubjectTerms_biblForm/@@ploneform-render-widget"/>
       </div>
 
-      <div class="form-horizontal gridfield">
+      <div class="form-horizontal">
           <tal:widget tal:replace="structure widgets/abstractAndSubjectTerms_language/@@ploneform-render-widget"/>
       </div>
 
@@ -154,7 +154,7 @@
           <tal:widget tal:replace="structure widgets/abstractAndSubjectTerms_notes/@@ploneform-render-widget"/>
       </div>
 
-      <div class="form-horizontal gridfield">
+      <div class="form-horizontal">
           <tal:widget tal:replace="structure widgets/abstractAndSubjectTerms_classNumber/@@ploneform-render-widget"/>    
       </div>
 

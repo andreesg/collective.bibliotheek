@@ -235,7 +235,7 @@ msgid "Person keyword type"
 msgstr "Soort pers.trefwoord"
 
 #: ../book.py
-msgid "Person keyword type"
+msgid "Name"
 msgstr "Naam"
 
 #: ../book.py
@@ -492,7 +492,9 @@ msgid "Location notes"
 msgstr "Bijzonderheden locatie"
 
 
-
+#: ../book.py
+msgid "label_author_role"
+msgstr "Functie"
 
 
 

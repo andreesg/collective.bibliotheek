@@ -10,6 +10,13 @@ from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
 priority_vocabulary = SimpleVocabulary(list(_createPriorityVocabulary()))
 insurance_type_vocabulary = SimpleVocabulary(list(_createInsuranceTypeVocabulary()))
 
+
+from z3c.relationfield.schema import RelationChoice
+from z3c.relationfield.schema import RelationList
+from collective.object.utils.widgets import SimpleRelatedItemsFieldWidget, AjaxSingleSelectFieldWidget
+from collective.object.utils.source import ObjPathSourceBinder
+from plone.directives import dexterity, form
+
 class ListField(schema.List):
     """We need to have a unique class for the field list so that we
     can apply a custom adapter."""
@@ -33,12 +40,54 @@ class ITitle(Interface):
 
     
 class IAuthor(Interface):
-    author = schema.TextLine(title=_(u'Author'), required=False)
-    role = schema.TextLine(title=_(u'Role'), required=False)
+    #author = schema.TextLine(title=_(u'Author'), required=False)
+
+    authors = RelationList(
+        title=_(u'Author'),
+        default=[],
+        missing_value=[],
+        value_type=RelationChoice(
+            title=u"Related",
+            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+        ),
+        required=False
+    )
+    form.widget('authors', SimpleRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
+
+    #role = schema.TextLine(title=_(u'label_author_role'), required=False)
+    roles = schema.List(
+        title=_(u'label_author_role'),
+        required=False,
+        value_type=schema.TextLine(),
+        missing_value=[],
+        default=[]
+    )
+    form.widget('roles', AjaxSingleSelectFieldWidget, vocabulary="collective.bibliotheek.role")
 
 class IIllustrator(Interface):
-    illustrator = schema.TextLine(title=_(u'Illustrator'), required=False)
-    role = schema.TextLine(title=_(u'Role'), required=False)
+    #illustrator = schema.TextLine(title=_(u'Illustrator'), required=False)
+
+    illustrators = RelationList(
+        title=_(u'Illustrator'),
+        default=[],
+        missing_value=[],
+        value_type=RelationChoice(
+            title=u"Related",
+            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+        ),
+        required=False
+    )
+    form.widget('illustrators', SimpleRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
+
+    roles = schema.List(
+        title=_(u'label_author_role'),
+        required=False,
+        value_type=schema.TextLine(),
+        missing_value=[],
+        default=[]
+    )
+    form.widget('roles', AjaxSingleSelectFieldWidget, vocabulary="collective.bibliotheek.role")
+    
 
 class IPlace(Interface):
     term =  schema.TextLine(title=_(u'Place'), required=False)
@@ -61,13 +110,29 @@ class IAccompanyingMaterial(Interface):
 
 class ISeries(Interface):
     seriesArticle = schema.TextLine(title=_(u'Series article'), required=False)
-    series = schema.TextLine(title=_(u'Series'), required=False)
+    series = schema.List(
+        title=_(u'Series'),
+        required=False,
+        value_type=schema.TextLine(),
+        missing_value=[],
+        default=[]
+    )
+    form.widget('series', AjaxSingleSelectFieldWidget, vocabulary="collective.bibliotheek.series")
+
     seriesNo = schema.TextLine(title=_(u'Series no.'), required=False)
     ISSNSeries = schema.TextLine(title=_(u'ISSN series'), required=False)
 
 class ISubseries(Interface):
     subseriesArticle = schema.TextLine(title=_(u'Subseries article'), required=False)
-    subseries = schema.TextLine(title=_(u'Subseries'), required=False)
+    subseries = schema.List(
+        title=_(u'Subseries'),
+        required=False,
+        value_type=schema.TextLine(),
+        missing_value=[],
+        default=[]
+    )
+    form.widget('subseries', AjaxSingleSelectFieldWidget, vocabulary="collective.bibliotheek.subseries")
+
     subseriesNo = schema.TextLine(title=_(u'Subseries number'), required=False)
     ISSNSubseries = schema.TextLine(title=_(u'ISSN subseries'), required=False)
 
@@ -97,7 +162,7 @@ class ILanguage(Interface):
     term = schema.TextLine(title=_(u'Language'), required=False)
 
 class INotes(Interface):
-    note = schema.TextLine(title=_(u'Notes'), required=False)
+    note = schema.Text(title=_(u'Notes'), required=False)
 
 
 class IClassNumber(Interface):

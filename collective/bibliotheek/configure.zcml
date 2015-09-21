@@ -85,5 +85,53 @@
     />
 
   <!-- -*- extra stuff goes here -*- -->
+  <!-- Indexers for vocabularies -->
+  
+  <adapter name="titleAuthorImprintCollation_titleAuthor_author_role" factory=".utils.indexers.titleAuthorImprintCollation_titleAuthor_author_role" />
+  <adapter name="seriesNotesISBN_series_series_series" factory=".utils.indexers.seriesNotesISBN_series_series_series" />
+  <adapter name="seriesNotesISBN_series_subseries_subseries" factory=".utils.indexers.seriesNotesISBN_series_subseries_subseries" />
+  <adapter name="abstractAndSubjectTerms_biblForm" factory=".utils.indexers.abstractAndSubjectTerms_biblForm" />
+  <adapter name="abstractAndSubjectTerms_materialType" factory=".utils.indexers.abstractAndSubjectTerms_materialType" />
+  <adapter name="abstractAndSubjectTerms_language" factory=".utils.indexers.abstractAndSubjectTerms_language" />
+  <adapter name="abstractAndSubjectTerms_classNumber" factory=".utils.indexers.abstractAndSubjectTerms_classNumber" />
+  
+  <utility
+    component=".utils.vocabularies.RoleVocabularyFactory"
+    name="collective.bibliotheek.role"
+    />
+
+  <utility
+    component=".utils.vocabularies.SeriesVocabularyFactory"
+    name="collective.bibliotheek.series"
+    />
+
+  <utility
+    component=".utils.vocabularies.SubseriesVocabularyFactory"
+    name="collective.bibliotheek.subseries"
+    />
+
+  <utility
+    component=".utils.vocabularies.BiblformVocabularyFactory"
+    name="collective.bibliotheek.biblform"
+    />
+
+  <utility
+    component=".utils.vocabularies.MaterialtypeVocabularyFactory"
+    name="collective.bibliotheek.materialtype"
+    />
+
+  <utility
+    component=".utils.vocabularies.LanguageVocabularyFactory"
+    name="collective.bibliotheek.language"
+    />
+
+  <utility
+    component=".utils.vocabularies.ClassnumberVocabularyFactory"
+    name="collective.bibliotheek.classnumber"
+    />
+
+    
+    
+
 
 </configure>

@@ -10,6 +10,7 @@ from zope.interface import alsoProvides
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.fieldproperty import FieldProperty
 from zope.component import getMultiAdapter
+from plone.app.widgets.dx import AjaxSelectFieldWidget
 
 #
 # Plone dependencies
@@ -116,13 +117,13 @@ class IBook(form.Schema):
     titleAuthorImprintCollation_titleAuthor_author = ListField(title=_(u'Author'),
         value_type=DictRow(title=_(u'Author'), schema=IAuthor),
         required=False)
-    form.widget(titleAuthorImprintCollation_titleAuthor_author=DataGridFieldFactory)
+    form.widget(titleAuthorImprintCollation_titleAuthor_author=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('titleAuthorImprintCollation_titleAuthor_author')
 
     titleAuthorImprintCollation_titleAuthor_illustrator = ListField(title=_(u'Illustrator'),
         value_type=DictRow(title=_(u'Illustrator'), schema=IIllustrator),
         required=False)
-    form.widget(titleAuthorImprintCollation_titleAuthor_illustrator=DataGridFieldFactory)
+    form.widget(titleAuthorImprintCollation_titleAuthor_illustrator=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('titleAuthorImprintCollation_titleAuthor_illustrator')
 
     titleAuthorImprintCollation_titleAuthor_corpAuthor = schema.TextLine(
@@ -267,25 +268,33 @@ class IBook(form.Schema):
                 'abstractAndSubjectTerms_digitalReferences_reference', 'abstractAndSubjectTerms_abstract_abstract']
     )
 
-    abstractAndSubjectTerms_materialType = ListField(title=_(u'Material type'),
-        value_type=DictRow(title=_(u'Material type'), schema=IMaterialType),
-        required=False)
-    form.widget(abstractAndSubjectTerms_materialType=BlockDataGridFieldFactory)
-    dexteritytextindexer.searchable('abstractAndSubjectTerms_materialType')
+    abstractAndSubjectTerms_materialType = schema.List(
+        title=_(u'Material type'),
+        required=False,
+        value_type=schema.TextLine(),
+        missing_value=[],
+        default=[]
+    )
+    form.widget('abstractAndSubjectTerms_materialType', AjaxSelectFieldWidget, vocabulary="collective.bibliotheek.materialtype")
 
 
-    abstractAndSubjectTerms_biblForm = ListField(title=_(u'Bibl. form'),
-        value_type=DictRow(title=_(u'Bibl. form'), schema=IBiblForm),
-        required=False)
-    form.widget(abstractAndSubjectTerms_biblForm=BlockDataGridFieldFactory)
-    dexteritytextindexer.searchable('abstractAndSubjectTerms_biblForm')
+    abstractAndSubjectTerms_biblForm = schema.List(
+        title=_(u'Bibl. form'),
+        required=False,
+        value_type=schema.TextLine(),
+        missing_value=[],
+        default=[]
+    )
+    form.widget('abstractAndSubjectTerms_biblForm', AjaxSelectFieldWidget, vocabulary="collective.bibliotheek.biblform")
 
-    abstractAndSubjectTerms_language = ListField(title=_(u'Language'),
-        value_type=DictRow(title=_(u'Language'), schema=ILanguage),
-        required=False)
-    form.widget(abstractAndSubjectTerms_language=BlockDataGridFieldFactory)
-    dexteritytextindexer.searchable('abstractAndSubjectTerms_language')
-
+    abstractAndSubjectTerms_language = schema.List(
+        title=_(u'Language'),
+        required=False,
+        value_type=schema.TextLine(),
+        missing_value=[],
+        default=[]
+    )
+    form.widget('abstractAndSubjectTerms_language', AjaxSelectFieldWidget, vocabulary="collective.bibliotheek.language")
 
     abstractAndSubjectTerms_level = schema.TextLine(
         title=_(u'Level'),
@@ -300,11 +309,14 @@ class IBook(form.Schema):
     form.widget(abstractAndSubjectTerms_notes=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('abstractAndSubjectTerms_notes')
 
-    abstractAndSubjectTerms_classNumber = ListField(title=_(u'Class number'),
-        value_type=DictRow(title=_(u'Class number'), schema=IClassNumber),
-        required=False)
-    form.widget(abstractAndSubjectTerms_classNumber=BlockDataGridFieldFactory)
-    dexteritytextindexer.searchable('abstractAndSubjectTerms_classNumber')
+    abstractAndSubjectTerms_classNumber =schema.List(
+        title=_(u'Class number'),
+        required=False,
+        value_type=schema.TextLine(),
+        missing_value=[],
+        default=[]
+    )
+    form.widget('abstractAndSubjectTerms_classNumber', AjaxSelectFieldWidget, vocabulary="collective.bibliotheek.classnumber")
 
     abstractAndSubjectTerms_subjectTerm = ListField(title=_(u'Subject term'),
         value_type=DictRow(title=_(u'Subject term'), schema=ISubjectTerm),
