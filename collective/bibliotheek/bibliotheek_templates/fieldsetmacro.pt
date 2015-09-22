@@ -17,8 +17,10 @@
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_title/@@ploneform-render-widget"/>
         </div>-->
 
-        <!--<tal:widget tal:replace="structure view/widgets/priref/@@ploneform-render-widget"/>-->
-
+        <div class="form-horizontal">
+          <tal:widget tal:replace="structure view/widgets/IBasic.title/@@ploneform-render-widget"/>
+        </div>
+        
         <div class="form-horizontal">
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_statementOfRespsib/@@ploneform-render-widget"/>
         </div>
