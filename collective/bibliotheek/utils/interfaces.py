@@ -93,13 +93,33 @@ class IPlace(Interface):
     term =  schema.TextLine(title=_(u'Place'), required=False)
 
 class IPublisher(Interface):
-    term = schema.TextLine(title=_(u'Publisher'), required=False)
+    publisher = RelationList(
+        title=_(u'Publisher'),
+        default=[],
+        missing_value=[],
+        value_type=RelationChoice(
+            title=u"Related",
+            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+        ),
+        required=False
+    )
+    form.widget('publisher', SimpleRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
 
 class IPlacePrinted(Interface):
     term = schema.TextLine(title=_(u'Place printed'), required=False)
 
 class IPrinter(Interface):
-    name = schema.TextLine(title=_(u'Printer'), required=False)
+    printer = RelationList(
+        title=_(u'Printer'),
+        default=[],
+        missing_value=[],
+        value_type=RelationChoice(
+            title=u"Related",
+            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+        ),
+        required=False
+    )
+    form.widget('printer', SimpleRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
 
 class IAccompanyingMaterial(Interface):
     term = schema.TextLine(title=_(u'Accompanying material'), required=False)
@@ -164,7 +184,6 @@ class ILanguage(Interface):
 class INotes(Interface):
     note = schema.Text(title=_(u'Notes'), required=False)
 
-
 class IClassNumber(Interface):
     term = schema.TextLine(title=_(u'Class number'), required=False)
 
@@ -223,9 +242,9 @@ class IAbstract(Interface):
 # Reproductions
 class IReproduction(Interface):
     reference = schema.TextLine(title=_(u'Reference'), required=False)
-    type = schema.TextLine(title=_(u'Type'), required=False)
-    format = schema.TextLine(title=_(u'Format'), required=False)
-    date = schema.TextLine(title=_(u'Date'), required=False)
+    #type = schema.TextLine(title=_(u'Type'), required=False)
+    #format = schema.TextLine(title=_(u'Format'), required=False)
+    #date = schema.TextLine(title=_(u'Date'), required=False)
     identifierURL = schema.TextLine(title=_(u'Identifier (URL)'), required=False)
     notes = schema.TextLine(title=_(u'Notes'), required=False)
 

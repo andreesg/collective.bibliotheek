@@ -568,6 +568,11 @@ class EditForm(edit.DefaultEditForm):
                     widget.allow_reorder = True
                 alsoProvides(widget, IFormWidget)
 
+        for widget in self.widgets.values():
+            alsoProvides(widget, IFormWidget)
+
+
+
 
 
 

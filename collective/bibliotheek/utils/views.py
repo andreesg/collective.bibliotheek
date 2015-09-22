@@ -6,14 +6,38 @@ from zope.component import getMultiAdapter
 from Products.CMFCore.utils import getToolByName
 from collective.bibliotheek import MessageFactory as _
 from plone.dexterity.browser.view import DefaultView
-
+from AccessControl import getSecurityManager
+from Products.CMFCore.permissions import ModifyPortalContent
+from plone.app.widgets.dx import AjaxSelectFieldWidget, AjaxSelectWidget, SelectWidget, DatetimeFieldWidget, IAjaxSelectWidget, RelatedItemsFieldWidget
+from zope.interface import alsoProvides
+from .interfaces import IFormWidget
+from plone.dexterity.browser import add, edit
+from collective.z3cform.datagridfield.interfaces import IDataGridField
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 # # # # # # # # # # # # #
 # View specific methods #
 # # # # # # # # # # # # #
 
-class BookView(DefaultView):
+class BookView(edit.DefaultEditForm):
     """ View class """
+
+    template = ViewPageTemplateFile('../bibliotheek_templates/view.pt')
+
+    def update(self):
+        super(BookView, self).update()
+        for group in self.groups:
+            for widget in group.widgets.values():
+                if IDataGridField.providedBy(widget):
+                    widget.auto_append = True
+                    widget.allow_reorder = True
+                alsoProvides(widget, IFormWidget)
+
+        for widget in self.widgets.values():
+            if IDataGridField.providedBy(widget) or IAjaxSelectWidget.providedBy(widget):
+                widget.auto_append = True
+                widget.allow_reorder = True
+            alsoProvides(widget, IFormWidget)
 
     def trim_white_spaces(self, text):
         if text != "" and text != None:
@@ -74,6 +98,12 @@ class BookView(DefaultView):
             _value = '<a href="/'+self.context.language+'/search?SearchableText=%s">%s</a>' % (value, value)
 
         return _value
+
+    def checkUserPermission(self):
+        sm = getSecurityManager()
+        if sm.checkPermission(ModifyPortalContent, self.context):
+            return True
+        return False
 
     def getFBdetails(self):
         item = self.context
