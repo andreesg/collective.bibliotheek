@@ -84,6 +84,11 @@
       permission="zope.Public"
     />
 
+  <adapter for=".book.IBook"
+    provides=".book.INameFromPersonNames"
+    factory=".book.NameFromPersonNames"
+    />
+
   <!-- -*- extra stuff goes here -*- -->
   <!-- Indexers for vocabularies -->
   
@@ -95,6 +100,7 @@
   <adapter name="abstractAndSubjectTerms_language" factory=".utils.indexers.abstractAndSubjectTerms_language" />
   <adapter name="abstractAndSubjectTerms_classNumber" factory=".utils.indexers.abstractAndSubjectTerms_classNumber" />
   <adapter name="abstractAndSubjectTerms_geographicalKeyword" factory=".utils.indexers.abstractAndSubjectTerms_geographicalKeyword" />
+  <adapter name="titleAuthorImprintCollation_imprint_placesPrinted" factory=".utils.indexers.titleAuthorImprintCollation_imprint_placesPrinted" />
 
   <utility
     component=".utils.vocabularies.RoleVocabularyFactory"
@@ -160,6 +166,15 @@
     component=".utils.vocabularies.SiteVocabularyFactory"
     name="collective.bibliotheek.site"
     />
+
+    <utility
+    component=".utils.vocabularies.PlacePrintedVocabularyFactory"
+    name="collective.bibliotheek.placeprinted"
+    />
   
+  <utility
+    component=".utils.vocabularies.SubjectTermTypeVocabularyFactory"
+    name="collective.bibliotheek.subjectermtype"
+    />
     
 </configure>

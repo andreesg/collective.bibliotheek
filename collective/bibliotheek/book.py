@@ -12,6 +12,8 @@ from zope.schema.fieldproperty import FieldProperty
 from zope.component import getMultiAdapter
 from plone.app.widgets.dx import AjaxSelectFieldWidget
 
+from plone.app.content.interfaces import INameFromTitle
+
 #
 # Plone dependencies
 #
@@ -67,6 +69,7 @@ from .utils.views import *
 # # # # # # # # # # # # #
 # # # # # # # # # # # # #
 
+
 class IBook(form.Schema):
 
     priref = schema.TextLine(
@@ -90,7 +93,7 @@ class IBook(form.Schema):
                 'titleAuthorImprintCollation_titleAuthor_illustrator',
                 'titleAuthorImprintCollation_titleAuthor_corpAuthor', 'titleAuthorImprintCollation_edition_edition',
                 'titleAuthorImprintCollation_imprint_place', 'titleAuthorImprintCollation_imprint_publisher',
-                'titleAuthorImprintCollation_imprint_year', 'titleAuthorImprintCollation_imprint_placePrinted',
+                'titleAuthorImprintCollation_imprint_year', 'titleAuthorImprintCollation_imprint_placesPrinted',
                 'titleAuthorImprintCollation_imprint_printer', 'titleAuthorImprintCollation_sortYear_sortYear',
                 'titleAuthorImprintCollation_collation_pagination', 'titleAuthorImprintCollation_collation_illustrations',
                 'titleAuthorImprintCollation_collation_dimensions', 'titleAuthorImprintCollation_collation_accompanyingMaterial']
@@ -104,7 +107,7 @@ class IBook(form.Schema):
 
     titleAuthorImprintCollation_titleAuthor_title = ListField(title=_(u'Title'),
         value_type=DictRow(title=_(u'Title'), schema=ITitle),
-        required=False)
+        required=True)
     form.widget(titleAuthorImprintCollation_titleAuthor_title=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('titleAuthorImprintCollation_titleAuthor_title')
 
@@ -126,10 +129,10 @@ class IBook(form.Schema):
     form.widget(titleAuthorImprintCollation_titleAuthor_illustrator=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('titleAuthorImprintCollation_titleAuthor_illustrator')
 
-    titleAuthorImprintCollation_titleAuthor_corpAuthor = schema.TextLine(
-        title=_(u'Corp.author'),
-        required=False
-    )
+    titleAuthorImprintCollation_titleAuthor_corpAuthor = ListField(title=_(u'Corp.author'),
+        value_type=DictRow(title=_(u'Corp.author'), schema=ICorpAuthor),
+        required=False)
+    form.widget(titleAuthorImprintCollation_titleAuthor_corpAuthor=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('titleAuthorImprintCollation_titleAuthor_corpAuthor')
 
     # Edition
@@ -158,11 +161,14 @@ class IBook(form.Schema):
     )
     dexteritytextindexer.searchable('titleAuthorImprintCollation_imprint_year')
 
-    titleAuthorImprintCollation_imprint_placePrinted = ListField(title=_(u'Place printed'),
-        value_type=DictRow(title=_(u'Place printed'), schema=IPlacePrinted),
-        required=False)
-    form.widget(titleAuthorImprintCollation_imprint_placePrinted=BlockDataGridFieldFactory)
-    dexteritytextindexer.searchable('titleAuthorImprintCollation_imprint_placePrinted')
+    titleAuthorImprintCollation_imprint_placesPrinted = schema.List(
+        title=_(u'Place printed'),
+        required=False,
+        value_type=schema.TextLine(),
+        missing_value=[],
+        default=[]
+    )
+    form.widget('titleAuthorImprintCollation_imprint_placesPrinted', AjaxSelectFieldWidget, vocabulary="collective.bibliotheek.placeprinted")
 
     titleAuthorImprintCollation_imprint_printer = ListField(title=_(u'Printer'),
         value_type=DictRow(title=_(u'Printer'), schema=IPrinter),
@@ -303,8 +309,8 @@ class IBook(form.Schema):
     dexteritytextindexer.searchable('abstractAndSubjectTerms_level')
 
 
-    abstractAndSubjectTerms_notes = ListField(title=_(u'Notes'),
-        value_type=DictRow(title=_(u'Notes'), schema=INotes),
+    abstractAndSubjectTerms_notes = ListField(title=_(u'label_notes_op'),
+        value_type=DictRow(title=_(u'Notes'), schema=IAbstractNotes),
         required=False)
     form.widget(abstractAndSubjectTerms_notes=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('abstractAndSubjectTerms_notes')
@@ -327,11 +333,11 @@ class IBook(form.Schema):
     abstractAndSubjectTerms_personKeywordType = ListField(title=_(u'Person keyword type'),
         value_type=DictRow(title=_(u'Person keyword type'), schema=IPersonKeywordType),
         required=False)
-    form.widget(abstractAndSubjectTerms_personKeywordType=DataGridFieldFactory)
+    form.widget(abstractAndSubjectTerms_personKeywordType=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('abstractAndSubjectTerms_personKeywordType')
 
     abstractAndSubjectTerms_geographicalKeyword = schema.List(
-        title=_(u'Greographical keyword'),
+        title=_(u'Geographical keyword'),
         required=False,
         value_type=schema.TextLine(),
         missing_value=[],
@@ -536,6 +542,22 @@ class IBook(form.Schema):
 class Book(Container):
     grok.implements(IBook)
     pass
+
+
+class INameFromPersonNames(INameFromTitle):
+    def title():
+        """Return a processed title"""
+
+class NameFromPersonNames(object):
+    implements(INameFromPersonNames)
+    
+    def __init__(self, context):
+        self.context = context
+
+    @property
+    def title(self):
+        return self.context.titleAuthorImprintCollation_titleAuthor_title[0]['title']
+
 
 # # # # # # # # # # # # # #
 # Book add/edit views   # 

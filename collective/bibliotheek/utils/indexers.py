@@ -110,3 +110,14 @@ def abstractAndSubjectTerms_geographicalKeyword(object, **kw):
     except:
         return []
 
+@indexer(IBook)
+def titleAuthorImprintCollation_imprint_placesPrinted(object, **kw):
+    try:
+        if hasattr(object, 'titleAuthorImprintCollation_imprint_placesPrinted'):
+            return object.titleAuthorImprintCollation_imprint_placesPrinted
+        else:
+            return []
+    except:
+        return []
+
+

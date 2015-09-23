@@ -13,13 +13,13 @@
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_article/@@ploneform-render-widget"/>
         </div>
 
-        <!--<div class="form-horizontal gridfield">
+        <div class="form-horizontal gridfield">
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_title/@@ploneform-render-widget"/>
-        </div>-->
-
-        <div class="form-horizontal">
-          <tal:widget tal:replace="structure view/widgets/IBasic.title/@@ploneform-render-widget"/>
         </div>
+
+        <!--<div class="form-horizontal">
+          <tal:widget tal:replace="structure view/widgets/IBasic.title/@@ploneform-render-widget"/>
+        </div>-->
         
         <div class="form-horizontal">
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_statementOfRespsib/@@ploneform-render-widget"/>
@@ -33,7 +33,7 @@
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_illustrator/@@ploneform-render-widget"/>
         </div>
 
-        <div class="form-horizontal">
+        <div class="form-horizontal gridfield">
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_corpAuthor/@@ploneform-render-widget"/>
         </div>
 
@@ -57,8 +57,8 @@
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_imprint_year/@@ploneform-render-widget"/>
         </div>
 
-        <div class="form-horizontal gridfield">
-          <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_imprint_placePrinted/@@ploneform-render-widget"/>
+        <div class="form-horizontal">
+          <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_imprint_placesPrinted/@@ploneform-render-widget"/>
         </div>
 
         <div class="form-horizontal gridfield">
@@ -103,11 +103,11 @@
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_article/@@ploneform-render-widget"/>
         </div>
 
-        <!--<div class="form-horizontal gridfield">
+        <div class="form-horizontal gridfield">
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_title/@@ploneform-render-widget"/>
-        </div>-->
+        </div>
 
-        <tal:widget tal:replace="structure view/widgets/IBasic.title/@@ploneform-render-widget"/>
+        <!--<tal:widget tal:replace="structure view/widgets/IBasic.title/@@ploneform-render-widget"/>-->
 
         <div class="form-horizontal">
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_statementOfRespsib/@@ploneform-render-widget"/>
@@ -121,7 +121,7 @@
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_illustrator/@@ploneform-render-widget"/>
         </div>
 
-        <div class="form-horizontal">
+        <div class="form-horizontal gridfield">
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_corpAuthor/@@ploneform-render-widget"/>
         </div>
 
@@ -145,8 +145,8 @@
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_imprint_year/@@ploneform-render-widget"/>
         </div>
 
-        <div class="form-horizontal gridfield">
-          <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_imprint_placePrinted/@@ploneform-render-widget"/>
+        <div class="form-horizontal">
+          <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_imprint_placesPrinted/@@ploneform-render-widget"/>
         </div>
 
         <div class="form-horizontal gridfield">
@@ -184,14 +184,12 @@
       <div class="form-horizontal gridfield">
           <tal:widget tal:replace="structure widgets/seriesNotesISBN_series_series/@@ploneform-render-widget"/>
       </div>
-
-      <h2 class="page-header" i18n:translate="">Subseries</h2>
       
       <div class="form-horizontal gridfield">
           <tal:widget tal:replace="structure widgets/seriesNotesISBN_series_subseries/@@ploneform-render-widget"/>
       </div>
 
-      <h2 class="page-header" i18n:translate="">Notes</h2>
+      <h2 class="page-header" i18n:translate="">Annotatie</h2>
 
       <div class="form-horizontal gridfield">
           <tal:widget tal:replace="structure widgets/seriesNotesISBN_notes_bibliographicalNotes/@@ploneform-render-widget"/>

@@ -88,6 +88,17 @@ class IIllustrator(Interface):
     )
     form.widget('roles', AjaxSingleSelectFieldWidget, vocabulary="collective.bibliotheek.role")
     
+class ICorpAuthor(Interface):
+    corpAuthor = RelationList(
+        title=_(u'Corp.author', default=u'Corp.author'),
+        default=[],
+        value_type=RelationChoice(
+            title=u"Related",
+            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+        ),
+        required=False
+    )
+    form.widget('corpAuthor', SimpleRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
 
 class IPlace(Interface):
     term =  schema.TextLine(title=_(u'Place'), required=False)
@@ -125,39 +136,21 @@ class IAccompanyingMaterial(Interface):
     term = schema.TextLine(title=_(u'Accompanying material'), required=False)
 
 
-
 # Series
-
 class ISeries(Interface):
     seriesArticle = schema.TextLine(title=_(u'Series article'), required=False)
-    series = schema.List(
-        title=_(u'Series'),
-        required=False,
-        value_type=schema.TextLine(),
-        missing_value=[],
-        default=[]
-    )
-    form.widget('series', AjaxSingleSelectFieldWidget, vocabulary="collective.bibliotheek.series")
-
+    series = schema.TextLine(title=_(u'Series'), required=False)
     seriesNo = schema.TextLine(title=_(u'Series no.'), required=False)
     ISSNSeries = schema.TextLine(title=_(u'ISSN series'), required=False)
 
 class ISubseries(Interface):
     subseriesArticle = schema.TextLine(title=_(u'Subseries article'), required=False)
-    subseries = schema.List(
-        title=_(u'Subseries'),
-        required=False,
-        value_type=schema.TextLine(),
-        missing_value=[],
-        default=[]
-    )
-    form.widget('subseries', AjaxSingleSelectFieldWidget, vocabulary="collective.bibliotheek.subseries")
-
+    subseries = schema.TextLine(title=_(u'Subseries'), required=False)
     subseriesNo = schema.TextLine(title=_(u'Subseries number'), required=False)
     ISSNSubseries = schema.TextLine(title=_(u'ISSN subseries'), required=False)
 
 class IBibliographicalNotes(Interface):
-    term = schema.TextLine(title=_(u'Bibliographical notes'), required=False)
+    term = schema.Text(title=_(u'Bibliographical notes'), required=False)
 
 class IISBN(Interface):
     ISBN = schema.TextLine(title=_(u'ISBN'), required=False)
@@ -184,11 +177,15 @@ class ILanguage(Interface):
 class INotes(Interface):
     note = schema.Text(title=_(u'Notes'), required=False)
 
+class IAbstractNotes(Interface):
+    note = schema.Text(title=_(u'label_notes_op'), required=False)
+
+
 class IClassNumber(Interface):
     term = schema.TextLine(title=_(u'Class number'), required=False)
 
 class ISubjectTerm(Interface):
-    subjectTermType = schema.Choice(title=_(u'Subject term type'), required=True, vocabulary="collective.object.subjecttype", default="No value")
+    subjectTermType = schema.Choice(title=_(u'Subject term type'), required=True, vocabulary="collective.bibliotheek.subjectermtype", default="No value")
     subjectType = schema.List(
         title=_(u'Subject term'),
         required=False,
@@ -209,14 +206,17 @@ class ISubjectTerm(Interface):
 
 class IPersonKeywordType(Interface):
     personKeywordType = schema.Choice(title=_(u'Person keyword type'), required=True, vocabulary="collective.bibliotheek.personkeywordtype", default="No value")
-    name = schema.List(
+    name = RelationList(
         title=_(u'Name'),
-        required=False,
-        value_type=schema.TextLine(),
+        default=[],
         missing_value=[],
-        default=[]
+        value_type=RelationChoice(
+            title=u"Related",
+            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+        ),
+        required=False
     )
-    form.widget('name', AjaxSingleSelectFieldWidget, vocabulary="collective.bibliotheek.site")
+    form.widget('name', SimpleRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
 
     role = schema.List(
         title=_(u'Role'),
@@ -347,18 +347,7 @@ class IOtherNumber(Interface):
 
 
 class ICopyDetails(Interface):
-    copyNumber = RelationList(
-        title=_(u'Copy number'),
-        default=[],
-        value_type=RelationChoice(
-            title=u"Related",
-            source=ObjPathSourceBinder()
-        ),
-        required=False
-    )
-    form.widget('copyNumber', SimpleRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
-
-
+    copyNumber = schema.TextLine(title=_(u'Copy number'), required=False)
     shelfMark = schema.TextLine(title=_(u'Shelf mark'), required=False)
     
     #availability = schema.TextLine(title=_(u'Availability'), required=False)
