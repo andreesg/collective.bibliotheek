@@ -661,7 +661,13 @@ msgstr 'vorm'
 msgid 'subform'
 msgstr 'subvorm'
 
+#: ../audiovisual.py
+msgid "label_author_role"
+msgstr "Functie"
 
+#: ../audiovisual.py
+msgid "label_notes_op"
+msgstr "Opmerkingen"
 
 
 

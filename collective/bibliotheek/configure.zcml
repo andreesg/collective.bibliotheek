@@ -89,6 +89,14 @@
     factory=".book.NameFromPersonNames"
     />
 
+
+  <plone:behavior
+    title="Library common fields"
+    description="Adds common fields to Library content types"
+    provides=".library.ICommonLibrary"
+    for="plone.dexterity.interfaces.IDexterityContainer"
+    />
+
   <!-- -*- extra stuff goes here -*- -->
   <!-- Indexers for vocabularies -->
   
