@@ -669,5 +669,17 @@ msgstr "Functie"
 msgid "label_notes_op"
 msgstr "Opmerkingen"
 
+#: ../serial.py
+msgid "personal name"
+msgstr "persoonsnaam"
+
+#: ../serial.py
+msgid "institution"
+msgstr "instelling"
+
+#: ../serial.py
+msgid "regiment/service"
+msgstr "dienstonderdeel"
+
 
 
