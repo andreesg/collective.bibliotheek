@@ -246,7 +246,7 @@ class IReproduction(Interface):
     #format = schema.TextLine(title=_(u'Format'), required=False)
     #date = schema.TextLine(title=_(u'Date'), required=False)
     identifierURL = schema.TextLine(title=_(u'Identifier (URL)'), required=False)
-    notes = schema.TextLine(title=_(u'Notes'), required=False)
+    notes = schema.Text(title=_(u'Notes'), required=False)
 
 ##
 ## Exhibitions, auctions, collections
@@ -282,7 +282,7 @@ class IAuction(Interface):
     #collector = schema.TextLine(title=_(u'Collector'), required=False)
     #commissairPriseur = schema.TextLine(title=_(u'Commissair-priseur'), required=False)
     #auctionNumber = schema.TextLine(title=_(u'Auction number'), required=False)
-    notes = schema.TextLine(title=_(u'Notes'), required=False)
+    notes = schema.Text(title=_(u'Notes'), required=False)
 
 class ICollection(Interface):
     collectionName = schema.TextLine(title=_(u'Collection name'), required=False)
@@ -290,7 +290,7 @@ class ICollection(Interface):
     #organisation = schema.TextLine(title=_(u'Organisation'), required=False)
     #date = schema.TextLine(title=_(u'Date'), required=False)
     #place = schema.TextLine(title=_(u'Place'), required=False)
-    notes = schema.TextLine(title=_(u'Notes'), required=False)
+    notes = schema.Text(title=_(u'Notes'), required=False)
 
 
 # Relations
