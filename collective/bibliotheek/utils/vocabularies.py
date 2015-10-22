@@ -110,6 +110,11 @@ ClassnumberVocabularyFactory = ObjectVocabulary('abstractAndSubjectTerms_classNu
 GeokeywordVocabularyFactory = ObjectVocabulary('abstractAndSubjectTerms_geographicalKeyword')
 LoanVocabularyFactory = ObjectVocabulary('copiesAndShelfMarks_copyDetails_loan')
 SiteVocabularyFactory = ObjectVocabulary('copiesAndShelfMarks_copyDetails_site')
+SubjectTypeVocabularyFactory = ObjectVocabulary('abstractAndSubjectTerms_subjectTerm_subjectType')
+PropernameVocabularyFactory = ObjectVocabulary('abstractAndSubjectTerms_subjectTerm_properName')
+
+
+
 PlacePrintedVocabularyFactory = ObjectVocabulary('titleAuthorImprintCollation_imprint_placesPrinted')
 SubjectTermTypeVocabularyFactory = ATVMVocabulary('SubjectTermType')
 ObjectStatusVocabularyFactory = ATVMVocabulary('ObjectStatus')

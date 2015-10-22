@@ -369,7 +369,7 @@ class IBook(form.Schema):
     abstractAndSubjectTerms_subjectTerm = ListField(title=_(u'Subject term'),
         value_type=DictRow(title=_(u'Subject term'), schema=ISubjectTerm),
         required=False)
-    form.widget(abstractAndSubjectTerms_subjectTerm=DataGridFieldFactory)
+    form.widget(abstractAndSubjectTerms_subjectTerm=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('abstractAndSubjectTerms_subjectTerm')
 
     abstractAndSubjectTerms_personKeywordType = ListField(title=_(u'Person keyword type'),

@@ -109,7 +109,11 @@
   <adapter name="abstractAndSubjectTerms_classNumber" factory=".utils.indexers.abstractAndSubjectTerms_classNumber" />
   <adapter name="abstractAndSubjectTerms_geographicalKeyword" factory=".utils.indexers.abstractAndSubjectTerms_geographicalKeyword" />
   <adapter name="titleAuthorImprintCollation_imprint_placesPrinted" factory=".utils.indexers.titleAuthorImprintCollation_imprint_placesPrinted" />
-
+  <adapter name="abstractAndSubjectTerms_subjectTerm_subjectType" factory=".utils.indexers.abstractAndSubjectTerms_subjectTerm_subjectType" />
+  <adapter name="abstractAndSubjectTerms_subjectTerm_properName" factory=".utils.indexers.abstractAndSubjectTerms_subjectTerm_properName" />
+  <adapter name="copiesAndShelfMarks_copyDetails_loan" factory=".utils.indexers.copiesAndShelfMarks_copyDetails_loan" />
+  <adapter name="copiesAndShelfMarks_copyDetails_site" factory=".utils.indexers.copiesAndShelfMarks_copyDetails_site" />
+  
   <utility
     component=".utils.vocabularies.RoleVocabularyFactory"
     name="collective.bibliotheek.role"
@@ -156,17 +160,17 @@
     />
 
   <utility
-    component=".utils.vocabularies.SiteVocabularyFactory"
+    component=".utils.vocabularies.SubjectTypeVocabularyFactory"
     name="collective.bibliotheek.subjecttype"
     />
 
   <utility
-    component=".utils.vocabularies.SiteVocabularyFactory"
+    component=".utils.vocabularies.PropernameVocabularyFactory"
     name="collective.bibliotheek.propername"
     />
 
     <utility
-    component=".utils.vocabularies.SiteVocabularyFactory"
+    component=".utils.vocabularies.LoanVocabularyFactory"
     name="collective.bibliotheek.loanCategory"
     />
     

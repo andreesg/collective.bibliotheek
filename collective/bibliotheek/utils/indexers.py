@@ -42,6 +42,84 @@ def seriesNotesISBN_series_series_series(object, **kw):
         return []
 
 @indexer(IBook)
+def abstractAndSubjectTerms_subjectTerm_subjectType(object, **kw):
+    try:
+        if hasattr(object, 'abstractAndSubjectTerms_subjectTerm'):
+            terms = []
+            items = object.abstractAndSubjectTerms_subjectTerm
+            if items:
+                for item in items:
+                    if item['subjectType']:
+                        for term in item['subjectType']:
+                            if term:
+                                terms.append(term)
+
+            return terms
+        else:
+            return []
+    except:
+        return []
+
+@indexer(IBook)
+def abstractAndSubjectTerms_subjectTerm_properName(object, **kw):
+    try:
+        if hasattr(object, 'abstractAndSubjectTerms_subjectTerm'):
+            terms = []
+            items = object.abstractAndSubjectTerms_subjectTerm
+            if items:
+                for item in items:
+                    if item['properName']:
+                        for term in item['properName']:
+                            if term:
+                                terms.append(term)
+
+            return terms
+        else:
+            return []
+    except:
+        return []
+
+@indexer(IBook)
+def copiesAndShelfMarks_copyDetails_loan(object, **kw):
+    try:
+        if hasattr(object, 'copiesAndShelfMarks_copyDetails'):
+            terms = []
+            items = object.copiesAndShelfMarks_copyDetails
+            if items:
+                for item in items:
+                    if item['loanCategory']:
+                        for term in item['loanCategory']:
+                            if term:
+                                terms.append(term)
+
+            return terms
+        else:
+            return []
+    except:
+        return []
+
+@indexer(IBook)
+def copiesAndShelfMarks_copyDetails_site(object, **kw):
+    try:
+        if hasattr(object, 'copiesAndShelfMarks_copyDetails'):
+            terms = []
+            items = object.copiesAndShelfMarks_copyDetails
+            if items:
+                for item in items:
+                    if item['site']:
+                        for term in item['site']:
+                            if term:
+                                terms.append(term)
+
+            return terms
+        else:
+            return []
+    except:
+        return []
+
+
+
+@indexer(IBook)
 def seriesNotesISBN_series_subseries_subseries(object, **kw):
     try:
         if hasattr(object, 'seriesNotesISBN_series_subseries'):
