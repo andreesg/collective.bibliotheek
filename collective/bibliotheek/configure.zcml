@@ -103,12 +103,14 @@
   <adapter name="titleAuthorImprintCollation_titleAuthor_author_role" factory=".utils.indexers.titleAuthorImprintCollation_titleAuthor_author_role" />
   <adapter name="seriesNotesISBN_series_series_series" factory=".utils.indexers.seriesNotesISBN_series_series_series" />
   <adapter name="seriesNotesISBN_series_subseries_subseries" factory=".utils.indexers.seriesNotesISBN_series_subseries_subseries" />
+  
+  <adapter name="titleAuthorImprintCollation_imprint_placesPrinted" factory=".utils.indexers.titleAuthorImprintCollation_imprint_placesPrinted" />
+  
   <adapter name="abstractAndSubjectTerms_biblForm" factory=".utils.indexers.abstractAndSubjectTerms_biblForm" />
   <adapter name="abstractAndSubjectTerms_materialType" factory=".utils.indexers.abstractAndSubjectTerms_materialType" />
   <adapter name="abstractAndSubjectTerms_language" factory=".utils.indexers.abstractAndSubjectTerms_language" />
   <adapter name="abstractAndSubjectTerms_classNumber" factory=".utils.indexers.abstractAndSubjectTerms_classNumber" />
   <adapter name="abstractAndSubjectTerms_geographicalKeyword" factory=".utils.indexers.abstractAndSubjectTerms_geographicalKeyword" />
-  <adapter name="titleAuthorImprintCollation_imprint_placesPrinted" factory=".utils.indexers.titleAuthorImprintCollation_imprint_placesPrinted" />
   <adapter name="abstractAndSubjectTerms_subjectTerm_subjectType" factory=".utils.indexers.abstractAndSubjectTerms_subjectTerm_subjectType" />
   <adapter name="abstractAndSubjectTerms_subjectTerm_properName" factory=".utils.indexers.abstractAndSubjectTerms_subjectTerm_properName" />
   <adapter name="copiesAndShelfMarks_copyDetails_loan" factory=".utils.indexers.copiesAndShelfMarks_copyDetails_loan" />

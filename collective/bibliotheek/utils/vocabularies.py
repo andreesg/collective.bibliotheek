@@ -114,7 +114,6 @@ SubjectTypeVocabularyFactory = ObjectVocabulary('abstractAndSubjectTerms_subject
 PropernameVocabularyFactory = ObjectVocabulary('abstractAndSubjectTerms_subjectTerm_properName')
 
 
-
 PlacePrintedVocabularyFactory = ObjectVocabulary('titleAuthorImprintCollation_imprint_placesPrinted')
 SubjectTermTypeVocabularyFactory = ATVMVocabulary('SubjectTermType')
 ObjectStatusVocabularyFactory = ATVMVocabulary('ObjectStatus')

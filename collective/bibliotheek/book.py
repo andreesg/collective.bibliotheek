@@ -610,16 +610,29 @@ class IBook(form.Schema):
     dexteritytextindexer.searchable('copiesAndShelfMarks_copyDetails')
 
 
-
-    
-
 # # # # # # # # # # # # # #
 # Book declaration        #
 # # # # # # # # # # # # # #
 
 class Book(Container):
     grok.implements(IBook)
-    pass
+
+    def Title(self):
+        ''' Return a title from title author '''
+        return self.titleAuthorImprintCollation_titleAuthor_title[0]['title']
+
+    @property
+    def title(self):
+        ''' return title '''
+        return self.titleAuthorImprintCollation_titleAuthor_title[0]['title']
+
+    @title.setter
+    def title(self, value):
+        try:
+            self.titleAuthorImprintCollation_titleAuthor_title[0]['title'] = value
+        except:
+            pass
+
 
 
 class INameFromPersonNames(INameFromTitle):
