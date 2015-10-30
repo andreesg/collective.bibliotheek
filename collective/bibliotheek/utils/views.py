@@ -24,7 +24,7 @@ class BookView(edit.DefaultEditForm):
 
     template = ViewPageTemplateFile('../bibliotheek_templates/view.pt')
 
-    def update(self):
+    """def update(self):
         super(BookView, self).update()
         for group in self.groups:
             for widget in group.widgets.values():
@@ -37,7 +37,7 @@ class BookView(edit.DefaultEditForm):
             if IDataGridField.providedBy(widget) or IAjaxSelectWidget.providedBy(widget):
                 widget.auto_append = False
                 widget.allow_reorder = True
-            alsoProvides(widget, IFormWidget)
+            alsoProvides(widget, IFormWidget)"""
 
     def trim_white_spaces(self, text):
         if text != "" and text != None:
