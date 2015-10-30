@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
+from Products.Five import BrowserView
 from zope.component import getMultiAdapter
 from Products.CMFCore.utils import getToolByName
 from collective.bibliotheek import MessageFactory as _
@@ -17,12 +17,12 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 # View specific methods #
 # # # # # # # # # # # # #
 
-class BookView(DefaultEditForm):
+class BookView(BrowserView):
     """ View class """
 
     template = ViewPageTemplateFile('../bibliotheek_templates/view.pt')
 
-    def update(self):
+    """def update(self):
         super(BookView, self).update()
         for group in self.groups:
             if group.__name__ == "title_author":
@@ -30,7 +30,7 @@ class BookView(DefaultEditForm):
                     if IDataGridField.providedBy(widget):
                         widget.auto_append = False
                         widget.allow_reorder = True
-                    alsoProvides(widget, IFormWidget)
+                    alsoProvides(widget, IFormWidget)"""
 
     def checkUserPermission(self):
         sm = getSecurityManager()
