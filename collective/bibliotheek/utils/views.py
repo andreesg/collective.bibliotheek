@@ -106,7 +106,7 @@ class BookView(edit.DefaultEditForm):
         return False
 
     def getFBdetails(self):
-        item = self.context
+        """item = self.context
         
         state = getMultiAdapter(
                 (item, self.request),
@@ -155,4 +155,5 @@ class BookView(edit.DefaultEditForm):
             else:
                 details["image"] = ""
 
-        return details
+        return details"""
+        pass
