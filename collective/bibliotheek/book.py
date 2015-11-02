@@ -682,7 +682,7 @@ class EditForm(edit.DefaultEditForm):
                 alsoProvides(widget, IFormWidget)
 
         for widget in self.widgets.values():
-            if IDataGridField.providedBy(widget) or IAjaxSelectWidget.providedBy(widget):
+            if IDataGridField.providedBy(widget):
                 widget.auto_append = False
                 widget.allow_reorder = True
                 alsoProvides(widget, IFormWidget)
