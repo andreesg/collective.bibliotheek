@@ -94,12 +94,12 @@ class IBook(form.Schema):
         fields=['titleAuthorImprintCollation_titleAuthor_article', 'titleAuthorImprintCollation_titleAuthor_title',
                 'titleAuthorImprintCollation_titleAuthor_statementOfRespsib', 'titleAuthorImprintCollation_titleAuthor_author',
                 'titleAuthorImprintCollation_titleAuthor_illustrator',
-                'titleAuthorImprintCollation_titleAuthor_corpAuthor', 'titleAuthorImprintCollation_titleAuthor_corpAuthors',
+                'titleAuthorImprintCollation_titleAuthor_corpAuthors',
                 'titleAuthorImprintCollation_edition_edition',
-                'titleAuthorImprintCollation_imprint_place', 'titleAuthorImprintCollation_imprint_publisher',
+                'titleAuthorImprintCollation_imprint_place',
                 'titleAuthorImprintCollation_imprint_publishers',
                 'titleAuthorImprintCollation_imprint_year', 'titleAuthorImprintCollation_imprint_placesPrinted',
-                'titleAuthorImprintCollation_imprint_printer', 'titleAuthorImprintCollation_imprint_printers',
+                'titleAuthorImprintCollation_imprint_printers',
                 'titleAuthorImprintCollation_sortYear_sortYear',
                 'titleAuthorImprintCollation_collation_pagination', 'titleAuthorImprintCollation_collation_illustrations',
                 'titleAuthorImprintCollation_collation_dimensions', 'titleAuthorImprintCollation_collation_accompanyingMaterial']
@@ -135,12 +135,6 @@ class IBook(form.Schema):
     form.widget(titleAuthorImprintCollation_titleAuthor_illustrator=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('titleAuthorImprintCollation_titleAuthor_illustrator')
 
-    titleAuthorImprintCollation_titleAuthor_corpAuthor = ListField(title=_(u'Corp.author'),
-        value_type=DictRow(title=_(u'Corp.author'), schema=ICorpAuthor),
-        required=False)
-    form.widget(titleAuthorImprintCollation_titleAuthor_corpAuthor=BlockDataGridFieldFactory)
-    dexteritytextindexer.searchable('titleAuthorImprintCollation_titleAuthor_corpAuthor')
-
     titleAuthorImprintCollation_titleAuthor_corpAuthors =  RelationList(
         title=_(u'Corp.author'),
         default=[],
@@ -167,11 +161,6 @@ class IBook(form.Schema):
     form.widget(titleAuthorImprintCollation_imprint_place=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('titleAuthorImprintCollation_imprint_place')
 
-    titleAuthorImprintCollation_imprint_publisher = ListField(title=_(u'Publisher'),
-        value_type=DictRow(title=_(u'Publisher'), schema=IPublisher),
-        required=False)
-    form.widget(titleAuthorImprintCollation_imprint_publisher=BlockDataGridFieldFactory)
-    dexteritytextindexer.searchable('titleAuthorImprintCollation_imprint_publisher')
 
     titleAuthorImprintCollation_imprint_publishers = RelationList(
         title=_(u'Publisher'),
@@ -199,12 +188,6 @@ class IBook(form.Schema):
         default=[]
     )
     form.widget('titleAuthorImprintCollation_imprint_placesPrinted', AjaxSelectFieldWidget, vocabulary="collective.bibliotheek.placeprinted")
-
-    titleAuthorImprintCollation_imprint_printer = ListField(title=_(u'Printer'),
-        value_type=DictRow(title=_(u'Printer'), schema=IPrinter),
-        required=False)
-    form.widget(titleAuthorImprintCollation_imprint_printer=BlockDataGridFieldFactory)
-    dexteritytextindexer.searchable('titleAuthorImprintCollation_imprint_printer')
 
     titleAuthorImprintCollation_imprint_printers = RelationList(
         title=_(u'Printer'),
@@ -447,16 +430,6 @@ class IBook(form.Schema):
                 'exhibitionsAuctionsCollections_collection']
     )
 
-    """exhibitionsAuctionsCollections_relatedExhibitions = RelationList(
-        title=_(u'Exhibitions'),
-        default=[],
-        value_type=RelationChoice(
-            title=u"Related",
-            source=ObjPathSourceBinder()
-        ),
-        required=False
-    )"""
-
     # Exhibition
     exhibitionsAuctionsCollections_exhibition = ListField(title=_(u'Exhibition'),
         value_type=DictRow(title=_(u'Exhibition'), schema=IExhibition),
@@ -483,9 +456,8 @@ class IBook(form.Schema):
     # # # # # # # # # # # # # # # # # # # # #
 
     model.fieldset('relations', label=_(u'Relations'), 
-        fields=['relations_volume', 'relations_analyticalCataloguing_partOf', 'relations_analyticalCataloguing_partsOf',
-                'relations_analyticalCataloguing_consistsOf','relations_analyticalCataloguing_consistsof', 
-                'relations_museumObjects', 'relations_relatedMuseumObjects', 'relations_museumobjects']
+        fields=['relations_volume', 'relations_analyticalCataloguing_partsOf',
+                'relations_analyticalCataloguing_consistsof', 'relations_museumobjects']
     )
 
     relations_volume = schema.TextLine(
@@ -493,13 +465,6 @@ class IBook(form.Schema):
         required=False
     )
     dexteritytextindexer.searchable('relations_volume')
-
-    # Analytical cataloguing
-    relations_analyticalCataloguing_partOf = ListField(title=_(u'Part of'),
-        value_type=DictRow(title=_(u'Part of'), schema=IPartOf),
-        required=False)
-    form.widget(relations_analyticalCataloguing_partOf=BlockDataGridFieldFactory)
-    dexteritytextindexer.searchable('relations_analyticalCataloguing_partOf')
 
     relations_analyticalCataloguing_partsOf = RelationList(
         title=_(u'Part of'),
@@ -513,12 +478,6 @@ class IBook(form.Schema):
     )
     form.widget('relations_analyticalCataloguing_partsOf', ExtendedRelatedItemsWidget, vocabulary='collective.object.relateditems')
 
-    relations_analyticalCataloguing_consistsOf = ListField(title=_(u'Consists of'),
-        value_type=DictRow(title=_(u'Consists of'), schema=IConsistsOf),
-        required=False)
-    form.widget(relations_analyticalCataloguing_consistsOf=BlockDataGridFieldFactory)
-    dexteritytextindexer.searchable('relations_analyticalCataloguing_consistsOf')
-
     relations_analyticalCataloguing_consistsof = RelationList(
         title=_(u'Consists of'),
         default=[],
@@ -531,13 +490,6 @@ class IBook(form.Schema):
     )
     form.widget('relations_analyticalCataloguing_consistsof', ExtendedRelatedItemsWidget, vocabulary='collective.object.relateditems')
 
-    # Museum objects
-    relations_museumObjects = ListField(title=_(u'Museum objects'),
-        value_type=DictRow(title=_(u'Museum objects'), schema=IMuseumObjects),
-        required=False)
-    form.widget(relations_museumObjects=DataGridFieldFactory)
-    dexteritytextindexer.searchable('relations_museumObjects')
-
     relations_museumobjects = RelationList(
         title=_(u'Object no.'),
         default=[],
@@ -549,16 +501,6 @@ class IBook(form.Schema):
         required=False
     )
     form.widget('relations_museumobjects', ExtendedRelatedItemsWidget, vocabulary='collective.object.relateditems')
-
-    relations_relatedMuseumObjects = RelationList(
-        title=_(u'Museum objects'),
-        default=[],
-        value_type=RelationChoice(
-            title=u"Related",
-            source=ObjPathSourceBinder()
-        ),
-        required=False
-    )
 
     # # # # # # # # # # # # # # # # # # # # #
     # Free fields and numbers               #
