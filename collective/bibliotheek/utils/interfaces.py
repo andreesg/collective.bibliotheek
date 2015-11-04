@@ -29,6 +29,9 @@ class ListField(schema.List):
 class IFormWidget(Interface):
     pass
 
+class ILibraryContent(Interface):
+    pass
+
 
 # # # # # # # # # # # # # #
 # DataGrid interfaces     # 

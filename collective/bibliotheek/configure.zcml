@@ -41,6 +41,36 @@
         permission="zope2.View"
         />
 
+  <class class="collective.bibliotheek.book.Book">
+    <implements interface=".utils.interfaces.ILibraryContent" />
+  </class>
+
+  <class class="collective.audiovisualmaterial.audiovisualmaterial.Audiovisual">
+    <implements interface=".utils.interfaces.ILibraryContent" />
+  </class>
+
+  <class class="collective.article.article.Article">
+    <implements interface=".utils.interfaces.ILibraryContent" />
+  </class>
+
+  <class class="collective.serial.serial.Serial">
+    <implements interface=".utils.interfaces.ILibraryContent" />
+  </class>
+
+  <class class="collective.resource.resource.Resource">
+    <implements interface=".utils.interfaces.ILibraryContent" />
+  </class>
+
+  <browser:page
+        name="contents_view"
+        for=".utils.interfaces.ILibraryContent"
+        class="collective.bibliotheek.utils.views.LibraryView"
+        template="bibliotheek_templates/library_view.pt"
+        permission="zope2.View"
+        title="View Content"
+        menu="plone_displayviews"
+        />
+
 
   <!-- Custom Edit form -->
   <browser:page

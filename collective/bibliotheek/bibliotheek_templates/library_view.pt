@@ -30,7 +30,8 @@
     </tal:notadmin>
 
     <tal:admin tal:condition="user_admin">
-      <div class="template-edit">
+      <div class="template-edit"
+        tal:define="portal_type context/portal_type">
         <div id="content-core">
       
           <form class="enableFormTabbing">
@@ -66,8 +67,26 @@
                           />
                   </tal:block>
                   
-                  <tal metal:use-macro="view/context/@@collective.bibliotheek.fieldsetmacro/test" />
-                  
+                  <tal:books tal:condition="python: portal_type == 'Book'">
+                    <tal metal:use-macro="view/context/@@collective.bibliotheek.fieldsetmacro/test" />
+                  </tal:books>
+
+                  <tal:audiovisual tal:condition="python: portal_type == 'Audiovisual'">
+                    <tal metal:use-macro="view/context/@@collective.audiovisualmaterial.fieldsetmacro/test" />
+                  </tal:audiovisual>
+
+                  <tal:article tal:condition="python: portal_type == 'Article'">
+                    <tal metal:use-macro="view/context/@@collective.article.fieldsetmacro/test" />
+                  </tal:article>
+
+                  <tal:serial tal:condition="python: portal_type == 'Serial'">
+                    <tal metal:use-macro="view/context/@@collective.serial.fieldsetmacro/test" />
+                  </tal:serial>
+
+                  <tal:resource tal:condition="python: portal_type == 'Resource'">
+                    <tal metal:use-macro="view/context/@@collective.resource.fieldsetmacro/test" />
+                  </tal:resource>
+
           </fieldset>
           </tal:block>
 

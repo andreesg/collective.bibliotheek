@@ -16,10 +16,6 @@
         <div class="form-horizontal gridfield">
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_title/@@ploneform-render-widget"/>
         </div>
-
-        <!--<div class="form-horizontal">
-          <tal:widget tal:replace="structure view/widgets/IBasic.title/@@ploneform-render-widget"/>
-        </div>-->
         
         <div class="form-horizontal">
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_statementOfRespsib/@@ploneform-render-widget"/>
@@ -97,8 +93,6 @@
 
         <h2 class="page-header" i18n:translate="">Title and author</h2>
 
-        
-
         <div class="form-horizontal">
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_article/@@ploneform-render-widget"/>
         </div>
@@ -106,8 +100,6 @@
         <div class="form-horizontal gridfield">
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_title/@@ploneform-render-widget"/>
         </div>
-
-        <!--<tal:widget tal:replace="structure view/widgets/IBasic.title/@@ploneform-render-widget"/>-->
 
         <div class="form-horizontal">
           <tal:widget tal:replace="structure widgets/titleAuthorImprintCollation_titleAuthor_statementOfRespsib/@@ploneform-render-widget"/>
