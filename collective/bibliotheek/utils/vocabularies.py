@@ -36,9 +36,34 @@ def _createPriorityVocabulary():
         term = SimpleTerm(value=key, token=str(key), title=name)
         yield term
 
+def _createSubjectTypeVocabulary():
+    # [object name, animal, plant, activity, event, subject, geography, concept, people, cultural affinity]
+    names = {
+        "object name": _(u"object name"),
+        "animal": _(u"animal"),
+        "plant": _(u"plant"),
+        "activity": _(u"activity"),
+        "event": _(u"event"),
+        "subject": _(u"subject"),
+        "concept": _(u"concept"),
+        "people": _(u"people"),
+        "cultural affinity": _(u"cultural affinity"),
+        "category": _(u"category")
+    }
+
+    terms = []
+    terms.append(SimpleTerm(value="No value", token=str("No value"), title=u" "))
+
+    for key, name in names.items():
+        term = SimpleTerm(value=key, token=str(key), title=name)
+        terms.append(term)
+    
+    return terms
+
+
+
 priority_vocabulary = SimpleVocabulary(list(_createPriorityVocabulary()))
 insurance_type_vocabulary = SimpleVocabulary(list(_createInsuranceTypeVocabulary()))
-
 
 class ATVMVocabulary(object):
     implements(IVocabularyFactory)
@@ -56,16 +81,11 @@ class ATVMVocabulary(object):
             terms = []
             pass
 
-        #if self.name == "TaxonomyRank":
-        #    taxonomies = ["kingdom", "subkingdom", "phylum or division", "subphylum or subdivision", "superclass", "class", "subclass", "infraclass", "superorder", "order", "suborder", "infraorder", "superfamily", "family", "subfamily", "tribe", "subtribe", "genus", "subgenus", "section", "subsection", "species", "subspecies", "variety", "subvariety", "form", "subform"]
-        #    for taxonomy in taxonomies:
-        #        if taxonomy not in units:
-        #            atvm.TaxonomyRank.addTerm(taxonomy.encode('ascii', 'ignore'), str(taxonomy))
-
         for term in units:
             if units[term]:
                 terms.append(SimpleVocabulary.createTerm(
                     term, term.encode('utf-8'), _(units[term].title)))
+
         return SimpleVocabulary(terms)
 
 class ObjectVocabulary(object):
@@ -118,4 +138,4 @@ PlacePrintedVocabularyFactory = ObjectVocabulary('titleAuthorImprintCollation_im
 SubjectTermTypeVocabularyFactory = ATVMVocabulary('SubjectTermType')
 ObjectStatusVocabularyFactory = ATVMVocabulary('ObjectStatus')
 PersonKeywordTypeVocabularyFactory = ATVMVocabulary('PersonKeywordType')
-
+subjecttype_vocabulary = SimpleVocabulary(_createSubjectTypeVocabulary())

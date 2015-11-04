@@ -4,7 +4,7 @@
 from zope import schema
 from zope.interface import Interface
 from collective.bibliotheek import MessageFactory as _
-from ..utils.vocabularies import _createPriorityVocabulary, _createInsuranceTypeVocabulary
+from ..utils.vocabularies import _createPriorityVocabulary, _createInsuranceTypeVocabulary, subjecttype_vocabulary
 from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
 
 priority_vocabulary = SimpleVocabulary(list(_createPriorityVocabulary()))
@@ -188,7 +188,7 @@ class IClassNumber(Interface):
     term = schema.TextLine(title=_(u'Class number'), required=False)
 
 class ISubjectTerm(Interface):
-    subjectTermType = schema.Choice(title=_(u'Subject term type'), required=True, vocabulary="collective.bibliotheek.subjectermtype", default="No value",  missing_value=" ")
+    subjectTermType = schema.Choice(title=_(u'Subject term type'), required=True, vocabulary=subjecttype_vocabulary, default="No value",  missing_value=" ")
     subjectType = schema.List(
         title=_(u'Subject term'),
         required=False,

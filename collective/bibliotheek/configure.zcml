@@ -151,7 +151,6 @@
   <adapter name="titleAuthorImprintCollation_titleAuthor_author" factory=".utils.indexers.titleAuthorImprintCollation_titleAuthor_author" />
   
 
-
   <utility
     component=".utils.vocabularies.RoleVocabularyFactory"
     name="collective.bibliotheek.role"
