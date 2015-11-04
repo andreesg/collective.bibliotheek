@@ -35,8 +35,7 @@
     
         <form class="enableFormTabbing">
 
-        <tal:block tal:repeat="group view/groups">
-       
+        <tal:block tal:repeat="group view/groups">       
         <fieldset
           tal:define="normalizeString nocall:context/@@plone/normalizeString;
                       fieldset_label group/label;
@@ -66,14 +65,10 @@
                         tal:content="structure error/render"
                         />
                 </tal:block>
+                <tal metal:use-macro="view/context/@@collective.bibliotheek.fieldsetmacro/test" />
                 
-
-                <tal:restriction tal:condition="python: fieldset_name == 'title_author'">
-                  <tal metal:use-macro="view/context/@@collective.bibliotheek.fieldsetmacro/private_view" />
-                </tal:restriction>
         </fieldset>
-      
-      </tal:block>
+        </tal:block>
 
         </form>
       </div>

@@ -62,7 +62,7 @@ from collective.bibliotheek import MessageFactory as _
 from .utils.vocabularies import *
 from .utils.interfaces import *
 from .utils.views import *
-from collective.object.utils.widgets import SimpleRelatedItemsFieldWidget, AjaxSingleSelectFieldWidget, ExtendedRelatedItemsWidget
+from collective.object.utils.widgets import SimpleRelatedItemsFieldWidget, AjaxSingleSelectFieldWidget, ExtendedRelatedItemsWidget, ExtendedRelatedItemsFieldWidget
 
 
 
@@ -145,7 +145,7 @@ class IBook(form.Schema):
         ),
         required=False
     )
-    form.widget('titleAuthorImprintCollation_titleAuthor_corpAuthors', ExtendedRelatedItemsWidget, vocabulary='collective.object.relateditems')
+    form.widget('titleAuthorImprintCollation_titleAuthor_corpAuthors', ExtendedRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
 
     # Edition
     titleAuthorImprintCollation_edition_edition = schema.TextLine(
@@ -172,7 +172,7 @@ class IBook(form.Schema):
         ),
         required=False
     )
-    form.widget('titleAuthorImprintCollation_imprint_publishers', ExtendedRelatedItemsWidget, vocabulary='collective.object.relateditems')
+    form.widget('titleAuthorImprintCollation_imprint_publishers', ExtendedRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
 
     titleAuthorImprintCollation_imprint_year = schema.TextLine(
         title=_(u'Year'),
@@ -199,7 +199,7 @@ class IBook(form.Schema):
         ),
         required=False
     )
-    form.widget('titleAuthorImprintCollation_imprint_printers', ExtendedRelatedItemsWidget, vocabulary='collective.object.relateditems')
+    form.widget('titleAuthorImprintCollation_imprint_printers', ExtendedRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
 
     # Sort year
     titleAuthorImprintCollation_sortYear_sortYear = schema.TextLine(
@@ -476,7 +476,7 @@ class IBook(form.Schema):
         ),
         required=False
     )
-    form.widget('relations_analyticalCataloguing_partsOf', ExtendedRelatedItemsWidget, vocabulary='collective.object.relateditems')
+    form.widget('relations_analyticalCataloguing_partsOf', ExtendedRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
 
     relations_analyticalCataloguing_consistsof = RelationList(
         title=_(u'Consists of'),
@@ -488,7 +488,7 @@ class IBook(form.Schema):
         ),
         required=False
     )
-    form.widget('relations_analyticalCataloguing_consistsof', ExtendedRelatedItemsWidget, vocabulary='collective.object.relateditems')
+    form.widget('relations_analyticalCataloguing_consistsof', ExtendedRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
 
     relations_museumobjects = RelationList(
         title=_(u'Object no.'),
@@ -500,7 +500,7 @@ class IBook(form.Schema):
         ),
         required=False
     )
-    form.widget('relations_museumobjects', ExtendedRelatedItemsWidget, vocabulary='collective.object.relateditems')
+    form.widget('relations_museumobjects', ExtendedRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
 
     # # # # # # # # # # # # # # # # # # # # #
     # Free fields and numbers               #
