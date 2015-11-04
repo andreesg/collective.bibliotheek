@@ -510,6 +510,9 @@ msgstr "objectnaam"
 msgid "animal"
 msgstr "dier"
 
+#: ../object.py
+msgid "category"
+msgstr "categorie"
 
 #: ../object.py
 msgid "plant"
