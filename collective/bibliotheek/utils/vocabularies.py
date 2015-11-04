@@ -37,7 +37,7 @@ def _createPriorityVocabulary():
         yield term
 
 def _createSubjectTypeVocabulary():
-    # [object name, animal, plant, activity, event, subject, geography, concept, people, cultural affinity]
+    
     names = {
         "object name": _(u"object name"),
         "animal": _(u"animal"),
@@ -59,6 +59,37 @@ def _createSubjectTypeVocabulary():
         terms.append(term)
     
     return terms
+
+class createSubjectTypeVocabulary(object):
+    
+    implements(IVocabularyFactory)
+  
+    def __init__(self):
+        pass
+
+    def __call__(self, context):
+
+        names = {
+            "object name": _(u"object name"),
+            "animal": _(u"animal"),
+            "plant": _(u"plant"),
+            "activity": _(u"activity"),
+            "event": _(u"event"),
+            "subject": _(u"subject"),
+            "concept": _(u"concept"),
+            "people": _(u"people"),
+            "cultural affinity": _(u"cultural affinity"),
+            "category": _(u"category")
+        }
+
+        terms = []
+        terms.append(SimpleTerm(value="No value", token=str("No value"), title=u" "))
+
+        for key, name in names.items():
+            term = SimpleTerm(value=key, token=str(key), title=name)
+            terms.append(term)
+        
+        return SimpleVocabulary(terms)
 
 
 
@@ -138,4 +169,4 @@ PlacePrintedVocabularyFactory = ObjectVocabulary('titleAuthorImprintCollation_im
 SubjectTermTypeVocabularyFactory = ATVMVocabulary('SubjectTermType')
 ObjectStatusVocabularyFactory = ATVMVocabulary('ObjectStatus')
 PersonKeywordTypeVocabularyFactory = ATVMVocabulary('PersonKeywordType')
-subjecttype_vocabulary = SimpleVocabulary(_createSubjectTypeVocabulary())
+subjecttype_vocabulary = createSubjectTypeVocabulary()

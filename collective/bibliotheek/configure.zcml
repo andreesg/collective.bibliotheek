@@ -222,7 +222,7 @@
     />
   
   <utility
-    component=".utils.vocabularies.SubjectTermTypeVocabularyFactory"
+    component=".utils.vocabularies.subjecttype_vocabulary"
     name="collective.bibliotheek.subjectermtype"
     />
     
