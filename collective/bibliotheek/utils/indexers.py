@@ -1,6 +1,41 @@
 
 from plone.indexer.decorator import indexer
 from ..book import IBook
+from z3c.relationfield.interfaces import IRelationValue
+
+@indexer(IBook)
+def titleAuthorImprintCollation_imprint_publishers(object, **kw):
+    try:
+        if hasattr(object, 'titleAuthorImprintCollation_imprint_publishers'):
+            terms = []
+            items = object.titleAuthorImprintCollation_imprint_publishers
+            if items:
+                for item in items:
+                    if IRelationValue.providedBy(item):
+                        to_obj = item.to_object
+                        title = getattr(to_obj, 'title', None)
+                        if title:
+                            terms.append(title)
+                    else:
+                        title = getattr(item, 'title', None)
+                        if title:
+                            terms.append(title)
+
+            return terms
+        else:
+            return []
+    except:
+        return []
+
+@indexer(IBook)
+def titleAuthorImprintCollation_imprint_year(object, **kw):
+    try:
+        if hasattr(object, 'titleAuthorImprintCollation_imprint_year'):
+            return object.titleAuthorImprintCollation_imprint_year
+        else:
+            return ""
+    except:
+        return ""
 
 @indexer(IBook)
 def titleAuthorImprintCollation_titleAuthor_author_role(object, **kw):
@@ -16,6 +51,39 @@ def titleAuthorImprintCollation_titleAuthor_author_role(object, **kw):
                                 terms.append(term)
 
             return terms
+        else:
+            return []
+    except:
+        return []
+
+@indexer(IBook)
+def titleAuthorImprintCollation_titleAuthor_author(object, **kw):
+    try:    
+        if hasattr(object, 'titleAuthorImprintCollation_titleAuthor_author'):
+            terms = []
+            items = object.titleAuthorImprintCollation_titleAuthor_author
+            for line in items:
+                if 'authors' in line:
+                    if line['authors']:
+                        for author in line['authors']:
+                            if IRelationValue.providedBy(author):
+                                author_obj = author.to_object
+                                title = getattr(author_obj, 'title', None)
+                                if title:
+                                    terms.append(title)
+                            else:
+                                title = getattr(author, 'title', None)
+                                if title:
+                                    terms.append(title)
+
+                if 'roles' in line:
+                    if line['roles']:
+                        for term in line['roles']:
+                            if term:
+                                terms.append(term)
+
+            return terms
+
         else:
             return []
     except:
