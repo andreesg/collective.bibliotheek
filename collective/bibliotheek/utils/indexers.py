@@ -38,6 +38,7 @@ def titleAuthorImprintCollation_imprint_year(object, **kw):
             return ""
     except:
         return ""
+        
 
 @indexer(IBook)
 def titleAuthorImprintCollation_titleAuthor_author_role(object, **kw):
