@@ -149,6 +149,7 @@
   <adapter name="titleAuthorImprintCollation_imprint_publisher" factory=".utils.indexers.titleAuthorImprintCollation_imprint_publishers" />
   <adapter name="titleAuthorImprintCollation_imprint_year" factory=".utils.indexers.titleAuthorImprintCollation_imprint_year" />
   <adapter name="titleAuthorImprintCollation_titleAuthor_author" factory=".utils.indexers.titleAuthorImprintCollation_titleAuthor_author" />
+  <adapter name="library_author" factory=".utils.indexers.library_author" />
   
 
   <utility

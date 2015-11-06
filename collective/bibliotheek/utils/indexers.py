@@ -3,6 +3,8 @@ from plone.indexer.decorator import indexer
 from ..book import IBook
 from z3c.relationfield.interfaces import IRelationValue
 
+
+
 @indexer(IBook)
 def titleAuthorImprintCollation_imprint_publishers(object, **kw):
     try:
@@ -55,6 +57,32 @@ def titleAuthorImprintCollation_titleAuthor_author_role(object, **kw):
             return []
     except:
         return []
+
+@indexer(IBook)
+def library_author(object, **kw):
+    try:
+        if hasattr(object, 'titleAuthorImprintCollation_titleAuthor_author'):
+            list_authors = []
+            items = object.titleAuthorImprintCollation_titleAuthor_author
+            if items:
+                for item in items:
+                    if item['authors']:
+                        author = item['authors'][0]
+                        if IRelationValue.providedBy(author):
+                            author_obj = author.to_object
+                            title = getattr(author_obj, 'title', None)
+                            if title:
+                                list_authors.append(title)
+                        else:
+                            title = getattr(author, 'title', None)
+                            if title:
+                                list_authors.append(title)
+
+            return "_".join(list_authors)
+        else:
+            return ""
+    except:
+        return ""
 
 @indexer(IBook)
 def titleAuthorImprintCollation_titleAuthor_author(object, **kw):
