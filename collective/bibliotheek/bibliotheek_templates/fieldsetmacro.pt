@@ -338,11 +338,9 @@
         </div>
 
         <h2 class="page-header" i18n:translate="">Museum objects</h2>
-        
-        <div class="form-horizontal">
-          <tal:widget tal:replace="structure widgets/relations_museumobjects/@@ploneform-render-widget"/>
+        <div>
+          <p tal:content="structure view/getRelatedObjects"></p>
         </div>
-
     </div>
   </tal:relations>
 

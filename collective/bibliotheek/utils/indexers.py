@@ -4,6 +4,15 @@ from ..book import IBook
 from z3c.relationfield.interfaces import IRelationValue
 
 
+@indexer(IBook)
+def library_year(object, **kw):
+    try:
+        if hasattr(object, 'titleAuthorImprintCollation_imprint_year'):
+            return object.titleAuthorImprintCollation_imprint_year
+        else:
+            return ""
+    except:
+        return ""
 
 @indexer(IBook)
 def titleAuthorImprintCollation_imprint_publishers(object, **kw):

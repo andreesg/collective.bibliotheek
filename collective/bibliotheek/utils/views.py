@@ -14,6 +14,10 @@ from .interfaces import IFormWidget
 from plone.dexterity.browser.edit import DefaultEditForm
 from collective.z3cform.datagridfield.interfaces import IDataGridField
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from zope.component import getUtility
+from zope.intid.interfaces import IIntIds
+from Acquisition import aq_inner
+from zc.relation.interfaces import ICatalog
 
 # # # # # # # # # # # # #
 # View specific methods #
@@ -38,6 +42,27 @@ class LibraryView(DefaultEditForm):
         if sm.checkPermission(ModifyPortalContent, self.context):
             return True
         return False
+
+    def getRelatedObjects(self):
+        catalog = getUtility(ICatalog)
+        intids = getUtility(IIntIds)
+
+        source_object = self.context
+
+        relations = catalog.findRelations(
+            dict(to_id=intids.getId(aq_inner(source_object)),
+                from_attribute="documentation_documentation")
+        )
+
+        structure = ""
+        for rel in list(relations):
+            from_object = rel.from_object
+            title = getattr(from_object, 'title', '')
+            obj_number = getattr(from_object, 'identification_identification_objectNumber', '')
+            url = from_object.absolute_url()
+            structure += "<p><a href='%s'><span>%s</span> - <span>%s</span></a></p>" %(url, obj_number, title)
+
+        return structure
 
 class BookView(DefaultEditForm):
     """ View class """

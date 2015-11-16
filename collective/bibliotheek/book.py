@@ -613,6 +613,10 @@ class AddView(add.DefaultAddView):
 
 class EditForm(edit.DefaultEditForm):
     template = ViewPageTemplateFile('bibliotheek_templates/edit.pt')
+
+    def getRelatedObjects(self):
+        print "get related objects"
+        pass
     
     def update(self):
         super(EditForm, self).update()
