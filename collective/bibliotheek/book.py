@@ -461,7 +461,7 @@ class IBook(form.Schema):
 
     model.fieldset('relations', label=_(u'Relations'), 
         fields=['relations_volume', 'relations_analyticalCataloguing_partsOf',
-                'relations_analyticalCataloguing_consistsof', 'relations_museumobjects']
+                'relations_analyticalCataloguing_consistsof']
     )
 
     relations_volume = schema.TextLine(
@@ -494,7 +494,7 @@ class IBook(form.Schema):
     )
     form.widget('relations_analyticalCataloguing_consistsof', ExtendedRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
 
-    relations_museumobjects = RelationList(
+    """relations_museumobjects = RelationList(
         title=_(u'Object no.'),
         default=[],
         missing_value=[],
@@ -504,7 +504,7 @@ class IBook(form.Schema):
         ),
         required=False
     )
-    form.widget('relations_museumobjects', ExtendedRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
+    form.widget('relations_museumobjects', ExtendedRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')"""
 
     # # # # # # # # # # # # # # # # # # # # #
     # Free fields and numbers               #
