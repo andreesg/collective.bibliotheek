@@ -49,7 +49,7 @@
     <implements interface=".utils.interfaces.ILibraryContent" />
   </class>
 
-  <class class="collective.article.article.Article">
+  <!--<class class="collective.article.article.Article">
     <implements interface=".utils.interfaces.ILibraryContent" />
   </class>
 
@@ -59,7 +59,7 @@
 
   <class class="collective.resource.resource.Resource">
     <implements interface=".utils.interfaces.ILibraryContent" />
-  </class>
+  </class>-->
 
   <browser:page
         name="contents_view"
@@ -98,13 +98,13 @@
   </class>
 
   <!-- Custom plone form widget -->
-  <browser:page
+  <!--<browser:page
     name="ploneform-render-widget"
     for=".book.IFormWidget"
     class="plone.app.z3cform.templates.RenderWidget"
     permission="zope.Public"
     template="bibliotheek_templates/widget.pt"
-  />
+  />-->
 
   <!-- Custom Add and Edit form macro -->
   <browser:page
@@ -120,12 +120,12 @@
     />
 
 
-  <plone:behavior
+  <!--<plone:behavior
     title="Library common fields"
     description="Adds common fields to Library content types"
     provides=".library.ICommonLibrary"
     for="plone.dexterity.interfaces.IDexterityContainer"
-    />
+    />-->
 
   <!-- -*- extra stuff goes here -*- -->
   <!-- Indexers for vocabularies -->
@@ -151,6 +151,8 @@
   <adapter name="titleAuthorImprintCollation_titleAuthor_author" factory=".utils.indexers.titleAuthorImprintCollation_titleAuthor_author" />
   <adapter name="library_author" factory=".utils.indexers.library_author" />
   <adapter name="library_year" factory=".utils.indexers.library_year" />
+  
+  <adapter name="book_priref" factory=".utils.indexers.book_priref" />
   
 
   <utility

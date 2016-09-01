@@ -51,7 +51,7 @@ class IAuthor(Interface):
         missing_value=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
@@ -59,7 +59,7 @@ class IAuthor(Interface):
 
     #role = schema.TextLine(title=_(u'label_author_role'), required=False)
     roles = schema.List(
-        title=_(u'label_author_role'),
+        title=_(u'Role'),
         required=False,
         value_type=schema.TextLine(),
         missing_value=[],
@@ -76,14 +76,14 @@ class IIllustrator(Interface):
         missing_value=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
     form.widget('illustrators', SimpleRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
 
     roles = schema.List(
-        title=_(u'label_author_role'),
+        title=_(u'Role'),
         required=False,
         value_type=schema.TextLine(),
         missing_value=[],
@@ -97,7 +97,7 @@ class ICorpAuthor(Interface):
         default=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
@@ -113,7 +113,7 @@ class IPublisher(Interface):
         missing_value=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
@@ -129,7 +129,7 @@ class IPrinter(Interface):
         missing_value=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
@@ -181,7 +181,7 @@ class INotes(Interface):
     note = schema.Text(title=_(u'Notes'), required=False)
 
 class IAbstractNotes(Interface):
-    note = schema.Text(title=_(u'label_notes_op'), required=False)
+    note = schema.Text(title=_(u'Notes'), required=False)
 
 
 class IClassNumber(Interface):
@@ -215,7 +215,7 @@ class IPersonKeywordType(Interface):
         missing_value=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
@@ -260,7 +260,7 @@ class IExhibition(Interface):
         default=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder(portal_type="Exhibition")
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
@@ -303,7 +303,7 @@ class IPartOf(Interface):
         default=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder()
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
@@ -315,7 +315,7 @@ class IConsistsOf(Interface):
         default=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder()
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
@@ -327,7 +327,7 @@ class IMuseumObjects(Interface):
         default=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder(portal_type="Object")
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )

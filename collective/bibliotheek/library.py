@@ -8,7 +8,7 @@ from zope.interface import alsoProvides
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.fieldproperty import FieldProperty
 from zope.component import getMultiAdapter
-from plone.app.widgets.dx import AjaxSelectFieldWidget
+from plone.app.z3cform.widget import AjaxSelectFieldWidget
 
 from plone.app.content.interfaces import INameFromTitle
 from plone.dexterity.interfaces import IDexterityContainer
@@ -39,7 +39,7 @@ from .utils.source import ObjPathSourceBinder
 #
 # plone.app.widgets dependencies
 #
-from plone.app.widgets.dx import DatetimeFieldWidget, RelatedItemsFieldWidget
+from plone.app.z3cform.widget import DatetimeFieldWidget, RelatedItemsFieldWidget
 
 #
 # DataGridFields dependencies

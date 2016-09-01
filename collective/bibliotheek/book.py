@@ -10,7 +10,7 @@ from zope.interface import alsoProvides
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.fieldproperty import FieldProperty
 from zope.component import getMultiAdapter
-from plone.app.widgets.dx import AjaxSelectFieldWidget
+from plone.app.z3cform.widget import AjaxSelectFieldWidget
 
 from plone.app.content.interfaces import INameFromTitle
 
@@ -38,7 +38,7 @@ from .utils.source import ObjPathSourceBinder
 #
 # plone.app.widgets dependencies
 #
-from plone.app.widgets.dx import DatetimeFieldWidget, RelatedItemsFieldWidget
+from plone.app.z3cform.widget import DatetimeFieldWidget, RelatedItemsFieldWidget
 
 #
 # DataGridFields dependencies
@@ -145,7 +145,7 @@ class IBook(form.Schema):
         missing_value=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
@@ -172,7 +172,7 @@ class IBook(form.Schema):
         missing_value=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
@@ -199,7 +199,7 @@ class IBook(form.Schema):
         missing_value=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
@@ -338,7 +338,7 @@ class IBook(form.Schema):
     dexteritytextindexer.searchable('abstractAndSubjectTerms_level')
 
 
-    abstractAndSubjectTerms_notes = ListField(title=_(u'label_notes_op'),
+    abstractAndSubjectTerms_notes = ListField(title=_(u'Notes'),
         value_type=DictRow(title=_(u'Notes'), schema=IAbstractNotes),
         required=False)
     form.widget(abstractAndSubjectTerms_notes=BlockDataGridFieldFactory)
@@ -476,7 +476,7 @@ class IBook(form.Schema):
         missing_value=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder()
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
@@ -488,7 +488,7 @@ class IBook(form.Schema):
         missing_value=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder()
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
@@ -565,12 +565,18 @@ class Book(Container):
 
     def Title(self):
         ''' Return a title from title author '''
-        return self.titleAuthorImprintCollation_titleAuthor_title[0]['title']
+        try:
+            return self.titleAuthorImprintCollation_titleAuthor_title[0]['title']
+        except:
+            return ""
 
     @property
     def title(self):
         ''' return title '''
-        return self.titleAuthorImprintCollation_titleAuthor_title[0]['title']
+        try:
+            return self.titleAuthorImprintCollation_titleAuthor_title[0]['title']
+        except:
+            return ""
 
     @title.setter
     def title(self, value):

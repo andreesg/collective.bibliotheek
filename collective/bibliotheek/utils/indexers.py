@@ -15,6 +15,16 @@ def library_year(object, **kw):
         return ""
 
 @indexer(IBook)
+def book_priref(object, **kw):
+    try:
+        if hasattr(object, 'priref'):
+            return object.priref
+        else:
+            return ""
+    except:
+        return ""
+
+@indexer(IBook)
 def titleAuthorImprintCollation_imprint_publishers(object, **kw):
     try:
         if hasattr(object, 'titleAuthorImprintCollation_imprint_publishers'):
