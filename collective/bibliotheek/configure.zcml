@@ -49,11 +49,11 @@
     <implements interface=".utils.interfaces.ILibraryContent" />
   </class>
 
-  <!--<class class="collective.article.article.Article">
+  <class class="collective.article.article.Article">
     <implements interface=".utils.interfaces.ILibraryContent" />
   </class>
 
-  <class class="collective.serial.serial.Serial">
+  <!--<class class="collective.serial.serial.Serial">
     <implements interface=".utils.interfaces.ILibraryContent" />
   </class>
 
